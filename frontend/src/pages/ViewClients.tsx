@@ -162,7 +162,7 @@ export default function ViewClients(): JSX.Element {
                         </Grid>
                         {/* Client type select */}
                         <Grid item xs="auto">
-                            <Select
+                            <Select<ClientTypeFilter>
                                 value={clientType}
                                 onChange={(event) =>
                                     setClientType(

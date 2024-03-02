@@ -7,7 +7,7 @@ import axios, {
 import { Dispatch } from "react"
 import ClientOrg from "../models/client-org"
 import User from "../models/user"
-import config from "./config"
+import { axiosConfig } from "./config"
 import Project from "../models/project"
 import ProposalForm from "../models/proposal-form"
 import {
@@ -71,12 +71,9 @@ export default class PortalApi {
         // Interceptor to include token in all requests if it is set
         this.axiosInstance.interceptors.request.use((requestConfig) => {
             const token = localStorage.getItem("token")
-            if (token !== null) {
-                /* eslint-disable no-param-reassign */
-                requestConfig.headers = config.headers ?? {}
+            if (token !== null)
                 requestConfig.headers.Authorization = `Token ${token}`
-                /* eslint-enable no-param-reassign */
-            }
+
             return requestConfig
         })
 
@@ -270,5 +267,5 @@ export default class PortalApi {
     }
 }
 
-const logResponses = process.env.NODE_ENV === "development"
-export const portalApiInstance = new PortalApi(config, logResponses)
+const logResponses = !!import.meta.env.DEV
+export const portalApiInstance = new PortalApi(axiosConfig, logResponses)

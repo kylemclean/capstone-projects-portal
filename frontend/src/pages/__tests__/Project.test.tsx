@@ -9,7 +9,7 @@ import Project, { ProjectType, Term } from "../../models/project"
 import ClientOrgType from "../../models/client-org-type"
 import ClientOrgShort from "../../models/client-org-short"
 import GlobalStateProvider from "../../global-state/provider"
-import requestConfig from "../../api/config"
+import { axiosConfig } from "../../api/config"
 
 const MockViewClientPage = (): JSX.Element => {
     const { id } = useParams<{ id: string }>()
@@ -74,7 +74,7 @@ const renderProjectsPage = (): ReturnType<typeof render> =>
 
 const server = setupServer(
     rest.get(
-        `${requestConfig.baseURL}/projects/:id`,
+        `${axiosConfig.baseURL}/projects/:id`,
         (req, res: ResponseComposition<Project>, ctx) =>
             res(ctx.json(mockProject))
     )

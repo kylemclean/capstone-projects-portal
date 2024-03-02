@@ -20,7 +20,7 @@ import {
 import GlobalStateProvider from "../../global-state/provider"
 import State from "../../global-state/state"
 import { LoginStatus, MockHomePage } from "../../test-utils"
-import requestConfig from "../../api/config"
+import { axiosConfig } from "../../api/config"
 
 // Test user data
 const userEmail = "user@example.com"
@@ -61,7 +61,7 @@ const MockSomeOtherPage = () => (
 
 const server = setupServer(
     // Mock /api/login/email response
-    rest.post(`${requestConfig.baseURL}/login/email/`, (req, res, ctx) => {
+    rest.post(`${axiosConfig.baseURL}/login/email/`, (req, res, ctx) => {
         const { email, password } = req.body as LoginWithEmailAndPasswordRequest
         if (email === userEmail && password === userPassword)
             return res(ctx.json(successfulEmailLoginResponse))

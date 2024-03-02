@@ -3,9 +3,9 @@
 import argparse
 from pathlib import Path
 
-import psycopg2
+import psycopg
 from environ import Env
-from psycopg2 import sql
+from psycopg import sql
 
 
 def main():
@@ -39,8 +39,8 @@ def main():
     PASSWORD = env("PORTAL_DB_PASSWORD")
 
     # Connect to database named 'postgres'
-    conn = psycopg2.connect(
-        database=PG_CONNECT_DB_NAME,
+    conn = psycopg.connect(
+        dbname=PG_CONNECT_DB_NAME,
         host=HOST,
         port=PORT,
         user=PG_CONNECT_USER,
@@ -104,9 +104,13 @@ def main():
             cursor.execute(
                 sql.SQL(
                     """
+            REASSIGN OWNED BY {user} TO {pg_connect_user};
+            DROP OWNED BY {user};
             DROP USER {user};
             """
-                ).format(user=sql.Identifier(USER))
+                ).format(
+                    pg_connect_user=sql.Identifier(PG_CONNECT_USER),
+                    user=sql.Identifier(USER))
             )
             print(f'Successfully dropped user "{USER}"')
 
@@ -136,6 +140,28 @@ def main():
     cursor.close()
     conn.close()
 
+    # On PostgreSQL 15 and later,
+    # the user must have the CREATE privilege on the public schema
+    conn = psycopg.connect(
+        dbname=DB_NAME,
+        host=HOST,
+        port=PORT,
+        user=PG_CONNECT_USER,
+        password=PG_CONNECT_PASSWORD,
+    )
+    conn.autocommit = True
+    cursor = conn.cursor()
+    cursor.execute(
+        sql.SQL(
+            """
+            GRANT CREATE ON SCHEMA public TO {user};
+            """
+        ).format(
+            user=sql.Identifier(USER)
+        )
+    )
+    cursor.close()
+    conn.close()
 
 if __name__ == "__main__":
     main()

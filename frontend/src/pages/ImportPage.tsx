@@ -575,10 +575,7 @@ export default function ImportPage(): JSX.Element | null {
                 </Stack>
                 <SnackbarAlert
                     open={successAlert}
-                    onClose={(
-                        event?: React.SyntheticEvent,
-                        reason?: string
-                    ) => {
+                    onClose={(event, reason) => {
                         if (reason === "clickaway") {
                             return
                         }
@@ -589,10 +586,7 @@ export default function ImportPage(): JSX.Element | null {
                 />
                 <SnackbarAlert
                     open={warningAlert}
-                    onClose={(
-                        event?: React.SyntheticEvent,
-                        reason?: string
-                    ) => {
+                    onClose={(event, reason) => {
                         if (reason === "clickaway") {
                             return
                         }
@@ -603,10 +597,7 @@ export default function ImportPage(): JSX.Element | null {
                 />
                 <SnackbarAlert
                     open={errorAlert}
-                    onClose={(
-                        event?: React.SyntheticEvent,
-                        reason?: string
-                    ) => {
+                    onClose={(event, reason) => {
                         if (reason === "clickaway") {
                             return
                         }

@@ -9,15 +9,17 @@ import { LoginResult } from "../models/login"
 import SnackbarAlert from "../components/SnackbarAlert"
 import RequireLoggedIn from "../components/RequireLoggedIn"
 
+interface SettingsCategoryProps {
+    title: string
+    children: React.ReactNode
+    depth?: number
+}
+
 function SettingsCategory({
     title,
     children,
     depth = 0,
-}: {
-    title: string
-    children: React.ReactNode
-    depth?: number
-}): JSX.Element {
+}: SettingsCategoryProps): JSX.Element {
     // Calculate the variant of header based on depth of this node
     const headerVariant = `h${Math.max(1, Math.min(6, 4 + depth))}` as
         | "h1"
@@ -29,7 +31,10 @@ function SettingsCategory({
 
     // Add depth property to children
     const childrenWithDepth = React.Children.map(children, (child) => {
-        if (React.isValidElement(child)) {
+        if (
+            React.isValidElement<SettingsCategoryProps>(child) &&
+            child.type === SettingsCategory
+        ) {
             return React.cloneElement(child, { depth: depth + 1 })
         }
         return child

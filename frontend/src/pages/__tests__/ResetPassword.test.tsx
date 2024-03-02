@@ -7,7 +7,7 @@ import { ResponseComposition, rest, RestRequest } from "msw"
 import { setupServer } from "msw/node"
 import GlobalStateProvider from "../../global-state/provider"
 import State from "../../global-state/state"
-import requestConfig from "../../api/config"
+import { axiosConfig } from "../../api/config"
 import ResetPasswordPage from "../ResetPassword"
 import { ResetPasswordRequest, ResetPasswordResult } from "../../models/login"
 import CurrentUserInfo from "../../models/current-user-info"
@@ -68,7 +68,7 @@ const INVALID_NEW_PASSWORD_ERROR_MESSAGE = "That is a bad password"
 
 const server = setupServer(
     rest.post(
-        `${requestConfig.baseURL}/reset-password/`,
+        `${axiosConfig.baseURL}/reset-password/`,
         (
             req: RestRequest<ResetPasswordRequest>,
             res: ResponseComposition<ResetPasswordResult>,

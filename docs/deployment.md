@@ -229,9 +229,9 @@ To allow users to log in to their portal accounts with GitHub, you must create a
 2. Copy the client ID of the application.
 3. Click the **Generate a client secret** button and copy the client secret.
 4. In `backend/.env`, set the `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` variables to the appropriate values.
-5. In `frontend/.env`, set the `REACT_APP_GITHUB_CLIENT_ID` variable to the client ID.
+5. In `frontend/.env`, set the `VITE_GITHUB_CLIENT_ID` variable to the client ID.
 
-You must redeploy the frontend as it needs to rebuild so that it uses the new `REACT_APP_GITHUB_CLIENT_ID` value.
+You must redeploy the frontend as it needs to rebuild so that it uses the new `VITE_GITHUB_CLIENT_ID` value.
 
 ## Redeploy
 

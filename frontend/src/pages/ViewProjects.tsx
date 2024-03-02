@@ -249,7 +249,7 @@ export default function ViewProjects(): JSX.Element {
                     </Grid>
                     {/* Client type select */}
                     <Grid item xs="auto">
-                        <Select
+                        <Select<ClientTypeFilter>
                             value={clientType}
                             onChange={(event) =>
                                 setClientType(
@@ -271,7 +271,7 @@ export default function ViewProjects(): JSX.Element {
                     </Grid>
                     {/* Project type select */}
                     <Grid item xs="auto">
-                        <Select
+                        <Select<ProjectTypeFilter>
                             value={projectType}
                             onChange={(event) =>
                                 setProjectType(
@@ -293,7 +293,7 @@ export default function ViewProjects(): JSX.Element {
                     </Grid>
                     {/* Project term select */}
                     <Grid item xs="auto">
-                        <Select
+                        <Select<TermFilter>
                             value={projectTerm}
                             onChange={(event) =>
                                 setProjectTerm(event.target.value as TermFilter)
@@ -313,7 +313,7 @@ export default function ViewProjects(): JSX.Element {
                     </Grid>
                     {/* Project year select */}
                     <Grid item xs="auto">
-                        <Select
+                        <Select<YearFilter>
                             value={projectYear}
                             onChange={(event) =>
                                 setProjectYear(event.target.value as YearFilter)

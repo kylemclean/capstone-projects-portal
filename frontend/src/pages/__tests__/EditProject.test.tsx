@@ -11,7 +11,7 @@ import ClientOrgShort from "../../models/client-org-short"
 import ClientOrgType from "../../models/client-org-type"
 import EditProject from "../EditProject"
 import GlobalStateProvider from "../../global-state/provider"
-import requestConfig from "../../api/config"
+import { axiosConfig } from "../../api/config"
 import CurrentUserInfo from "../../models/current-user-info"
 import State from "../../global-state/state"
 
@@ -89,12 +89,12 @@ const renderPage = (initialState?: State) =>
 
 const server = setupServer(
     rest.get(
-        `${requestConfig.baseURL}/projects/${projectTest.id}/`,
+        `${axiosConfig.baseURL}/projects/${projectTest.id}/`,
         (req, res: ResponseComposition<Project>, ctx) =>
             res(ctx.json(projectTest))
     ),
     rest.patch(
-        `${requestConfig.baseURL}/projects/${projectTest.id}/`,
+        `${axiosConfig.baseURL}/projects/${projectTest.id}/`,
         (req: RestRequest<FormData>, res, ctx) =>
             res(
                 ctx.json({

@@ -17,7 +17,7 @@ import ClientOrgType from "../../models/client-org-type"
 import ProjectShort from "../../models/project-short"
 import { ProjectType, Term } from "../../models/project"
 import { QueryParamsDisplay, waitForQueryParam } from "../../test-utils"
-import requestConfig from "../../api/config"
+import { axiosConfig } from "../../api/config"
 
 const MockViewClientPage = (): JSX.Element => {
     const { id } = useParams<{ id: string }>()
@@ -186,7 +186,7 @@ const getSearchControls = () => {
 
 const server = setupServer(
     rest.get(
-        `${requestConfig.baseURL}/orgs/`,
+        `${axiosConfig.baseURL}/orgs/`,
         (req, res: ResponseComposition<ClientOrg[]>, ctx) =>
             res(ctx.json(allClients))
     )

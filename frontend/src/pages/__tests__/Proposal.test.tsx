@@ -9,10 +9,10 @@ import { setupServer } from "msw/node"
 import Proposal from "../Proposal"
 import ThankYou from "../ThankYou"
 import GlobalStateProvider from "../../global-state/provider"
-import requestConfig from "../../api/config"
+import { axiosConfig } from "../../api/config"
 
 const server = setupServer(
-    rest.post(`${requestConfig.baseURL}/proposals`, (req, res, ctx) =>
+    rest.post(`${axiosConfig.baseURL}/proposals`, (req, res, ctx) =>
         res(ctx.json("Good job"))
     )
 )

@@ -93,7 +93,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": env("PORTAL_DB_DATABASE"),
         "USER": env("PORTAL_DB_USER"),
         "PASSWORD": env("PORTAL_DB_PASSWORD"),

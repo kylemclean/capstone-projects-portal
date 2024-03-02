@@ -9,7 +9,7 @@ import State from "../../global-state/state"
 import SettingsPage from "../Settings"
 import CurrentUserInfo from "../../models/current-user-info"
 import { LoginResult } from "../../models/login"
-import requestConfig from "../../api/config"
+import { axiosConfig } from "../../api/config"
 import { MockLoginPage } from "../../test-utils"
 
 /**
@@ -59,7 +59,7 @@ const userReturnedAfterLoggingOutOtherSessions: CurrentUserInfo = {
 
 const server = setupServer(
     rest.post(
-        `${requestConfig.baseURL}/logout-all/`,
+        `${axiosConfig.baseURL}/logout-all/`,
         (req, res: ResponseComposition<LoginResult>, ctx) =>
             res(
                 ctx.json({

@@ -112,7 +112,7 @@ export default function Login(): JSX.Element {
     }
 
     const onClickGitHubLogin = () => {
-        const githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID
+        const githubClientId = import.meta.env.VITE_GITHUB_CLIENT_ID
         doOAuth2Login(
             "GitHub",
             new URL(

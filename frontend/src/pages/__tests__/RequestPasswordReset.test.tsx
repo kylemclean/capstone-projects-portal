@@ -7,7 +7,7 @@ import { setupServer } from "msw/node"
 import GlobalStateProvider from "../../global-state/provider"
 import State from "../../global-state/state"
 import RequestPasswordReset from "../RequestPasswordReset"
-import requestConfig from "../../api/config"
+import { axiosConfig } from "../../api/config"
 import { RequestPasswordResetRequest } from "../../models/login"
 
 const renderRequestPasswordResetPage = (initialState?: State) =>
@@ -34,7 +34,7 @@ let lastReceivedRequestEmail: string | undefined
 
 const server = setupServer(
     rest.post(
-        `${requestConfig.baseURL}/request-password-reset/`,
+        `${axiosConfig.baseURL}/request-password-reset/`,
         (req: RestRequest<RequestPasswordResetRequest>, res, ctx) => {
             lastReceivedRequestEmail = req.body.email
             return res(ctx.json({ success: true }))

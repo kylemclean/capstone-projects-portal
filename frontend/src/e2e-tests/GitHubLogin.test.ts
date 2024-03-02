@@ -85,8 +85,8 @@ const makeDriver = (): selenium.ThenableWebDriver => {
             "--disable-gpu",
             "--disable-dev-shm-usage"
         )
-    if (process.env.CHROME_BINARY_PATH)
-        chromeOptions.setChromeBinaryPath(process.env.CHROME_BINARY_PATH)
+    if (import.meta.env.CHROME_BINARY_PATH)
+        chromeOptions.setChromeBinaryPath(import.meta.env.CHROME_BINARY_PATH)
 
     const driver = new selenium.Builder()
         .forBrowser("chrome")

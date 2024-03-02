@@ -99,7 +99,7 @@ export default function UserNavbarButton(): JSX.Element | null {
                     <MenuItem
                         key="admin"
                         component={Link}
-                        href={process.env.REACT_APP_ADMIN_URL ?? "/admin/"}
+                        href={import.meta.env.VITE_ADMIN_URL ?? "/admin/"}
                     >
                         Admin
                     </MenuItem>,

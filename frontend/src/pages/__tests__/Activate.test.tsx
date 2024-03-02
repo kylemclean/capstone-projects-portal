@@ -9,7 +9,7 @@ import ActivatePage from "../Activate"
 import State from "../../global-state/state"
 import { MockHomePage } from "../../test-utils"
 import { ActivateRequest, LoginResult } from "../../models/login"
-import requestConfig from "../../api/config"
+import { axiosConfig } from "../../api/config"
 
 /**
  * Renders the Activate page in a router with a GlobalStateProvider.
@@ -67,7 +67,7 @@ const invalidNewPasswordResponse: LoginResult = {
 const server = setupServer(
     // Mock /api/activate endpoint
     rest.post(
-        `${requestConfig.baseURL}/activate/`,
+        `${axiosConfig.baseURL}/activate/`,
         (
             req: RestRequest<ActivateRequest>,
             res: ResponseComposition<LoginResult>,

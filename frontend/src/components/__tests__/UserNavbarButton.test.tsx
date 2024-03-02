@@ -164,7 +164,7 @@ it("has working admin button for superusers", async () => {
     // Assert that admin button leads to the admin page
     expect(adminButton!).toHaveAttribute(
         "href",
-        process.env.REACT_APP_ADMIN_URL ?? "/admin/"
+        import.meta.env.VITE_ADMIN_URL ?? "/admin/"
     )
 })
 
