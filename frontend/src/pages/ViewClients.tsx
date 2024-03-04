@@ -6,7 +6,7 @@ import {
     Container,
     Grid,
     MenuItem,
-    Select,
+    TextField,
     ToggleButton,
 } from "@mui/material"
 import Typography from "@mui/material/Typography"
@@ -162,7 +162,7 @@ export default function ViewClients(): JSX.Element {
                         </Grid>
                         {/* Client type select */}
                         <Grid item xs="auto">
-                            <Select<ClientTypeFilter>
+                            <TextField
                                 value={clientType}
                                 onChange={(event) =>
                                     setClientType(
@@ -170,18 +170,18 @@ export default function ViewClients(): JSX.Element {
                                     )
                                 }
                                 sx={{ backgroundColor: "#ffffff" }}
-                                autoWidth
-                                aria-label="Type"
+                                select
+                                label="Type"
                             >
                                 <MenuItem value={ANY}>
-                                    <em>Type</em>
+                                    <em>Any</em>
                                 </MenuItem>
                                 {Object.values(ClientOrgType).map((value) => (
                                     <MenuItem key={value} value={value}>
                                         {value}
                                     </MenuItem>
                                 ))}
-                            </Select>
+                            </TextField>
                         </Grid>
                         {/* Reverse sort order button */}
                         <Grid item xs="auto">

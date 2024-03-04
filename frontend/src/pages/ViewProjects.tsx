@@ -3,8 +3,8 @@ import {
     Container,
     Grid,
     MenuItem,
-    Select,
     Stack,
+    TextField,
     ToggleButton,
 } from "@mui/material"
 import { useEffect, useState } from "react"
@@ -249,7 +249,7 @@ export default function ViewProjects(): JSX.Element {
                     </Grid>
                     {/* Client type select */}
                     <Grid item xs="auto">
-                        <Select<ClientTypeFilter>
+                        <TextField
                             value={clientType}
                             onChange={(event) =>
                                 setClientType(
@@ -257,21 +257,22 @@ export default function ViewProjects(): JSX.Element {
                                 )
                             }
                             sx={{ backgroundColor: "#ffffff" }}
-                            autoWidth
+                            select
+                            label="Client"
                         >
                             <MenuItem value={ANY}>
-                                <em>Client</em>
+                                <em>Any</em>
                             </MenuItem>
                             {Object.values(ClientOrgType).map((value) => (
                                 <MenuItem key={value} value={value}>
                                     {value}
                                 </MenuItem>
                             ))}
-                        </Select>
+                        </TextField>
                     </Grid>
                     {/* Project type select */}
                     <Grid item xs="auto">
-                        <Select<ProjectTypeFilter>
+                        <TextField
                             value={projectType}
                             onChange={(event) =>
                                 setProjectType(
@@ -279,50 +280,53 @@ export default function ViewProjects(): JSX.Element {
                                 )
                             }
                             sx={{ backgroundColor: "#ffffff" }}
-                            autoWidth
+                            select
+                            label="Type"
                         >
                             <MenuItem value={ANY}>
-                                <em>Type</em>
+                                <em>Any</em>
                             </MenuItem>
                             {Object.values(ProjectType).map((value) => (
                                 <MenuItem key={value} value={value}>
                                     {value}
                                 </MenuItem>
                             ))}
-                        </Select>
+                        </TextField>
                     </Grid>
                     {/* Project term select */}
                     <Grid item xs="auto">
-                        <Select<TermFilter>
+                        <TextField
                             value={projectTerm}
                             onChange={(event) =>
                                 setProjectTerm(event.target.value as TermFilter)
                             }
                             sx={{ backgroundColor: "#ffffff" }}
-                            autoWidth
+                            select
+                            label="Term"
                         >
                             <MenuItem value={ANY}>
-                                <em>Term</em>
+                                <em>Any</em>
                             </MenuItem>
                             {Object.values(Term).map((value) => (
                                 <MenuItem key={value} value={value}>
                                     {value}
                                 </MenuItem>
                             ))}
-                        </Select>
+                        </TextField>
                     </Grid>
                     {/* Project year select */}
                     <Grid item xs="auto">
-                        <Select<YearFilter>
+                        <TextField
                             value={projectYear}
                             onChange={(event) =>
                                 setProjectYear(event.target.value as YearFilter)
                             }
                             sx={{ backgroundColor: "#ffffff" }}
-                            autoWidth
+                            select
+                            label="Year"
                         >
                             <MenuItem value={ANY}>
-                                <em>Year</em>
+                                <em>Any</em>
                             </MenuItem>
                             {allProjects
                                 ?.map((project) => project.year)
@@ -338,7 +342,7 @@ export default function ViewProjects(): JSX.Element {
                                         {year}
                                     </MenuItem>
                                 ))}
-                        </Select>
+                        </TextField>
                     </Grid>
                     {/* Reverse sort order button */}
                     <Grid item xs="auto">

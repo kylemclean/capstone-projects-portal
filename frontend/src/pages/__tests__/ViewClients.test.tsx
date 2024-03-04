@@ -177,7 +177,7 @@ const waitForClientsToFinishLoading = async (): Promise<void> =>
 
 const getSearchControls = () => {
     const searchInput = screen.getByPlaceholderText("Search")
-    const typeSelectButton = screen.getByRole("button", { name: "Type" })
+    const typeSelectButton = screen.getByRole("combobox", { name: "Type" })
     const reverseSortButton = screen.getByRole("switch", {
         name: "Sort in Ascending Order",
     })
@@ -305,7 +305,7 @@ it("can filter by client type", async () => {
     const { typeSelectButton } = getSearchControls()
 
     // Name of type for no filtering
-    const noFilterTypeName = "Type"
+    const noFilterTypeName = "Any"
 
     const testFilteringByType = async (type: ClientOrgType | null) => {
         // Open type filter menu

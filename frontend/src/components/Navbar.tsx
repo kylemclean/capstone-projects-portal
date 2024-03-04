@@ -88,7 +88,7 @@ export default function Navbar(): JSX.Element {
                     <Link
                         component={RouterLink}
                         to={href}
-                        color={theme.palette.text.secondary}
+                        color="#FFF"
                         variant="body1"
                         underline="none"
                     >
@@ -104,7 +104,7 @@ export default function Navbar(): JSX.Element {
                     <Link
                         component={RouterLink}
                         to="/proposal"
-                        color={theme.palette.text.secondary}
+                        color="white"
                         variant="body1"
                         underline="none"
                     >
@@ -121,14 +121,14 @@ export default function Navbar(): JSX.Element {
     const getMobileMenuChoices = () => (
         <>
             <div style={{ padding: "0px 10px 15px" }}>
-                <PortalLogo color={theme.palette.text.secondary} />
+                <PortalLogo color="white" />
             </div>
             {headersData.map(({ label, href }) => (
                 <Link
                     key={label}
                     component={RouterLink}
                     to={href}
-                    color={theme.palette.text.secondary}
+                    color="white"
                     variant="body1"
                     underline="none"
                 >
@@ -208,7 +208,7 @@ export default function Navbar(): JSX.Element {
                             </div>
                         </Drawer>
 
-                        <PortalLogo color={theme.palette.text.secondary} />
+                        <PortalLogo color="white" />
                     </Grid>
                     <Grid
                         item
@@ -237,7 +237,7 @@ export default function Navbar(): JSX.Element {
                 width="100%"
             >
                 <Grid item md={2} lg={3}>
-                    <PortalLogo color={theme.palette.text.secondary} />
+                    <PortalLogo color="white" />
                 </Grid>
                 <Grid
                     container

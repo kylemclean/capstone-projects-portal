@@ -19,7 +19,7 @@ export default function LoginButton(): JSX.Element {
                         filter: "brightness(98%)",
                         backgroundColor: `${theme.palette.secondary.main}`,
                         "& .loginText": {
-                            color: `${theme.palette.text.secondary}`,
+                            color: "white",
                             transition: "0.1s",
                         },
                     },

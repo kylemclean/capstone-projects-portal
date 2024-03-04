@@ -142,9 +142,9 @@ const waitForProjectsToFinishLoading = async (): Promise<void> =>
 
 const getSearchControls = () => {
     const searchInput = screen.getByPlaceholderText("Search")
-    const typeSelectButton = screen.getByRole("button", { name: "Type" })
-    const termSelectButton = screen.getByRole("button", { name: "Term" })
-    const yearSelectButton = screen.getByRole("button", { name: "Year" })
+    const typeSelectButton = screen.getByRole("combobox", { name: "Type" })
+    const termSelectButton = screen.getByRole("combobox", { name: "Term" })
+    const yearSelectButton = screen.getByRole("combobox", { name: "Year" })
     return { searchInput, typeSelectButton, termSelectButton, yearSelectButton }
 }
 
@@ -218,7 +218,7 @@ it("can filter by project type", async () => {
     const { typeSelectButton } = getSearchControls()
 
     // Name of type for no filtering
-    const noFilterTypeName = "Type"
+    const noFilterTypeName = "Any"
 
     const testFilteringByType = async (type: ProjectType | null) => {
         // Open type filter menu
@@ -264,7 +264,7 @@ it("can filter by project term", async () => {
     const { termSelectButton } = getSearchControls()
 
     // Name of type for no filtering
-    const noFilterTermName = "Term"
+    const noFilterTermName = "Any"
 
     const testFilteringByType = async (term: Term | null) => {
         // Open type filter menu
