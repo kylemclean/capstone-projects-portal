@@ -34,13 +34,11 @@ exports[`matches snapshot while logged in 1`] = `
             </h5>
             <p
               class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
-              depth="2"
             >
               Your account has a password.
             </p>
             <a
               class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
-              depth="2"
               href="/reset-password"
               tabindex="0"
             >
@@ -60,7 +58,6 @@ exports[`matches snapshot while logged in 1`] = `
             </h5>
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-bh137t-MuiButtonBase-root-MuiButton-root"
-              depth="2"
               tabindex="0"
               type="button"
             >

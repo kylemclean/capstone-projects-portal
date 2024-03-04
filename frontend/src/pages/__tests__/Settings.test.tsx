@@ -8,7 +8,6 @@ import GlobalStateProvider from "../../global-state/provider"
 import State from "../../global-state/state"
 import SettingsPage from "../Settings"
 import CurrentUserInfo from "../../models/current-user-info"
-import { LoginResult } from "../../models/login"
 import { axiosConfig } from "../../api/config"
 import { MockLoginPage } from "../../test-utils"
 
