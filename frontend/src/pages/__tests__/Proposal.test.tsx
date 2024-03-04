@@ -3,7 +3,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect"
 import { Route, MemoryRouter } from "react-router-dom"
 // import API mocking utilities from Mock Service Worker
-import { rest } from "msw"
+import { http } from "msw"
 import { setupServer } from "msw/node"
 
 import Proposal from "../Proposal"
@@ -12,8 +12,8 @@ import GlobalStateProvider from "../../global-state/provider"
 import { axiosConfig } from "../../api/config"
 
 const server = setupServer(
-    rest.post(`${axiosConfig.baseURL}/proposals`, (req, res, ctx) =>
-        res(ctx.json("Good job"))
+    http.post(`${axiosConfig.baseURL}/proposals`, () =>
+        Response.json("Good job")
     )
 )
 

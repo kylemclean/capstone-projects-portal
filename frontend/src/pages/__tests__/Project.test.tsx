@@ -3,7 +3,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect"
 import { Route, MemoryRouter, useParams } from "react-router-dom"
 import { setupServer } from "msw/node"
-import { ResponseComposition, rest } from "msw"
+import { http } from "msw"
 import ProjectPage from "../Project"
 import Project, { ProjectType, Term } from "../../models/project"
 import ClientOrgType from "../../models/client-org-type"
@@ -73,10 +73,8 @@ const renderProjectsPage = (): ReturnType<typeof render> =>
     )
 
 const server = setupServer(
-    rest.get(
-        `${axiosConfig.baseURL}/projects/:id`,
-        (req, res: ResponseComposition<Project>, ctx) =>
-            res(ctx.json(mockProject))
+    http.get(`${axiosConfig.baseURL}/projects/:id`, () =>
+        Response.json(mockProject)
     )
 )
 

@@ -2,7 +2,7 @@ import React from "react"
 import "@testing-library/jest-dom"
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { MemoryRouter, Route } from "react-router-dom"
-import { rest, RestRequest } from "msw"
+import { http } from "msw"
 import { setupServer } from "msw/node"
 import GlobalStateProvider from "../../global-state/provider"
 import State from "../../global-state/state"
@@ -33,11 +33,13 @@ const getFormControls = () => ({
 let lastReceivedRequestEmail: string | undefined
 
 const server = setupServer(
-    rest.post(
+    http.post(
         `${axiosConfig.baseURL}/request-password-reset/`,
-        (req: RestRequest<RequestPasswordResetRequest>, res, ctx) => {
-            lastReceivedRequestEmail = req.body.email
-            return res(ctx.json({ success: true }))
+        async ({ request }) => {
+            lastReceivedRequestEmail = (
+                (await request.json()) as RequestPasswordResetRequest
+            ).email
+            return Response.json({ success: true })
         }
     )
 )

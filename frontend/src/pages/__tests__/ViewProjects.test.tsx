@@ -10,7 +10,7 @@ import {
 import "@testing-library/jest-dom/extend-expect"
 import { Route, MemoryRouter, useParams } from "react-router-dom"
 import { setupServer } from "msw/node"
-import { ResponseComposition, rest } from "msw"
+import { http } from "msw"
 import Project, { ProjectType, Term } from "../../models/project"
 import ClientOrgType from "../../models/client-org-type"
 import ClientOrgShort from "../../models/client-org-short"
@@ -149,10 +149,8 @@ const getSearchControls = () => {
 }
 
 const server = setupServer(
-    rest.get(
-        `${axiosConfig.baseURL}/projects/`,
-        (req, res: ResponseComposition<Project[]>, ctx) =>
-            res(ctx.json(allProjects))
+    http.get(`${axiosConfig.baseURL}/projects/`, () =>
+        Response.json(allProjects)
     )
 )
 

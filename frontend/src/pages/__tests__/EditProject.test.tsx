@@ -2,7 +2,7 @@ import React from "react"
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import { Route, MemoryRouter, useParams } from "react-router-dom"
 // import API mocking utilities from Mock Service Worker
-import { ResponseComposition, rest, RestRequest } from "msw"
+import { http } from "msw"
 import { setupServer } from "msw/node"
 // add custom jest matchers from jest-dom
 import "@testing-library/jest-dom/extend-expect"
@@ -88,23 +88,13 @@ const renderPage = (initialState?: State) =>
     )
 
 const server = setupServer(
-    rest.get(
-        `${axiosConfig.baseURL}/projects/${projectTest.id}/`,
-        (req, res: ResponseComposition<Project>, ctx) =>
-            res(ctx.json(projectTest))
+    http.get(`${axiosConfig.baseURL}/projects/${projectTest.id}/`, () =>
+        Response.json(projectTest)
     ),
-    rest.patch(
-        `${axiosConfig.baseURL}/projects/${projectTest.id}/`,
-        (req: RestRequest<FormData>, res, ctx) =>
-            res(
-                ctx.json({
-                    success: true,
-                })
-            )
+    http.patch(`${axiosConfig.baseURL}/projects/${projectTest.id}/`, () =>
+        Response.json({ success: true })
     ),
-    rest.get("https://example.com/image.jpg", (req, res, ctx) =>
-        res(ctx.text(""))
-    )
+    http.get("https://example.com/image.jpg", () => new Response(""))
 )
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())

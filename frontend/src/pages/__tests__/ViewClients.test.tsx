@@ -9,7 +9,7 @@ import {
 } from "@testing-library/react"
 import { MemoryRouter, Route, useParams } from "react-router-dom"
 import { setupServer } from "msw/node"
-import { ResponseComposition, rest } from "msw"
+import { http } from "msw"
 import GlobalStateProvider from "../../global-state/provider"
 import ViewClientsPage from "../ViewClients"
 import ClientOrg from "../../models/client-org"
@@ -185,11 +185,7 @@ const getSearchControls = () => {
 }
 
 const server = setupServer(
-    rest.get(
-        `${axiosConfig.baseURL}/orgs/`,
-        (req, res: ResponseComposition<ClientOrg[]>, ctx) =>
-            res(ctx.json(allClients))
-    )
+    http.get(`${axiosConfig.baseURL}/orgs/`, () => Response.json(allClients))
 )
 
 beforeAll(() => server.listen())

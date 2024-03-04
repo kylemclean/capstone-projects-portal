@@ -3,7 +3,7 @@ import { render, waitFor, screen, fireEvent } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { MemoryRouter, Route } from "react-router-dom"
 import { setupServer } from "msw/node"
-import { ResponseComposition, rest } from "msw"
+import { http } from "msw"
 import GlobalStateProvider from "../../global-state/provider"
 import State from "../../global-state/state"
 import SettingsPage from "../Settings"
@@ -58,16 +58,12 @@ const userReturnedAfterLoggingOutOtherSessions: CurrentUserInfo = {
 }
 
 const server = setupServer(
-    rest.post(
-        `${axiosConfig.baseURL}/logout-all/`,
-        (req, res: ResponseComposition<LoginResult>, ctx) =>
-            res(
-                ctx.json({
-                    success: true,
-                    token: "HEREISYOURNEWTOKEN",
-                    user: userReturnedAfterLoggingOutOtherSessions,
-                })
-            )
+    http.post(`${axiosConfig.baseURL}/logout-all/`, () =>
+        Response.json({
+            success: true,
+            token: "HEREISYOURNEWTOKEN",
+            user: userReturnedAfterLoggingOutOtherSessions,
+        })
     )
 )
 

@@ -1,7 +1,7 @@
 import * as React from "react"
 
 // import API mocking utilities from Mock Service Worker
-import { rest } from "msw"
+import { http } from "msw"
 import { setupServer } from "msw/node"
 
 // import react-testing methods
@@ -61,11 +61,14 @@ const MockSomeOtherPage = () => (
 
 const server = setupServer(
     // Mock /api/login/email response
-    rest.post(`${axiosConfig.baseURL}/login/email/`, (req, res, ctx) => {
-        const { email, password } = req.body as LoginWithEmailAndPasswordRequest
+    http.post(`${axiosConfig.baseURL}/login/email/`, async ({ request }) => {
+        const { email, password } =
+            (await request.json()) as LoginWithEmailAndPasswordRequest
+
         if (email === userEmail && password === userPassword)
-            return res(ctx.json(successfulEmailLoginResponse))
-        return res(ctx.json(unsuccessfulEmailLoginResponse))
+            return Response.json(successfulEmailLoginResponse)
+
+        return Response.json(unsuccessfulEmailLoginResponse)
     })
 )
 
