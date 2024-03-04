@@ -10,6 +10,7 @@ import ClientOrgType from "../../models/client-org-type"
 import ClientOrgShort from "../../models/client-org-short"
 import GlobalStateProvider from "../../global-state/provider"
 import { axiosConfig } from "../../api/config"
+import { vi } from "vitest"
 
 const MockViewClientPage = (): JSX.Element => {
     const { id } = useParams<{ id: string }>()
@@ -85,7 +86,7 @@ it("has a working link to project website", async () => {
     renderProjectsPage()
 
     const websiteButton = await screen.findByRole("button", { name: "Website" })
-    window.open = jest.fn()
+    window.open = vi.fn()
     fireEvent.click(websiteButton)
     expect(window.open).toBeCalledWith(`https://www.google.com/`, "_blank")
 })
@@ -96,7 +97,7 @@ it("has a working link to project source code page", async () => {
     const sourceCodeButton = await screen.findByRole("button", {
         name: "Source Code",
     })
-    window.open = jest.fn()
+    window.open = vi.fn()
     fireEvent.click(sourceCodeButton)
     expect(window.open).toBeCalledWith(`https://github.com`, "_blank")
 })
