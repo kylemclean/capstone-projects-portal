@@ -267,5 +267,5 @@ export default class PortalApi {
     }
 }
 
-const logResponses = !!import.meta.env.DEV
+const logResponses = false
 export const portalApiInstance = new PortalApi(axiosConfig, logResponses)

@@ -101,7 +101,7 @@ export default function EditProject(): JSX.Element {
             .then((projectResult) => {
                 setProject(projectResult)
                 // Set the initial project form values to the project data
-                reset(projectResult)
+                setTimeout(() => reset(projectResult), 0)
 
                 // Set the tags to the project's tags
                 tagsVar.length = 0
@@ -214,6 +214,7 @@ export default function EditProject(): JSX.Element {
         {
             name: "review",
             label: "Client Review",
+            type: "multi_line",
         },
         {
             name: "website_url",

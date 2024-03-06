@@ -87,6 +87,8 @@ export default function EditProfile(): JSX.Element {
                     linkedin_link: userData.linkedin_link,
                 }
 
+                setTimeout(() => reset(userDataObject), 0)
+
                 // nullify the image if the image link is broken
                 portalApiInstance
                     .getImage(userData.image as BlobPart)
@@ -110,12 +112,6 @@ export default function EditProfile(): JSX.Element {
                 }
             })
     }, [userId, user?.image])
-
-    /* populate the form with the initial user data
-       when the user data is loaded from the backend */
-    useEffect(() => {
-        reset(user)
-    }, [reset, user])
 
     // handle form submission (after the form data has been validated)
     const submitHandler: SubmitHandler<IFormInputs> = (data) => {
