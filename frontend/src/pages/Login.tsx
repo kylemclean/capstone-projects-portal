@@ -34,9 +34,7 @@ import RequireNotLoggedIn from "../components/RequireNotLoggedIn"
 import { githubAuthorizeUrl } from "../api/config"
 
 function randomNonce(): string {
-    const array = new Uint8Array(8)
-    crypto.getRandomValues(array)
-    return Buffer.from(array).toString("hex")
+    return Math.random().toString(36).substring(2)
 }
 
 interface LoginFormInputs {
