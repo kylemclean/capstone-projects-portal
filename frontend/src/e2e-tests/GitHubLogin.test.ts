@@ -73,18 +73,24 @@ app.get("/api/mock-github/login/oauth/authorize", (req, res) => {
 })
 
 let server: Server
-beforeAll((done) => {
-    server = app.listen(8192, () => done())
-})
+beforeAll(
+    () =>
+        new Promise((resolve, reject) => {
+            try {
+                server = app.listen(8192, () => resolve(undefined))
+            } catch (e) {
+                reject(e)
+            }
+        })
+)
 
 const makeDriver = (): selenium.ThenableWebDriver => {
-    const chromeOptions = new chrome.Options()
-        .headless()
-        .addArguments(
-            "--no-sandbox",
-            "--disable-gpu",
-            "--disable-dev-shm-usage"
-        )
+    const chromeOptions = new chrome.Options().addArguments(
+        "--headless=new",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-dev-shm-usage"
+    )
     if (import.meta.env.CHROME_BINARY_PATH)
         chromeOptions.setChromeBinaryPath(import.meta.env.CHROME_BINARY_PATH)
 

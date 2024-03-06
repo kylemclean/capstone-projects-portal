@@ -7,6 +7,7 @@ export default defineWorkspace([
             name: "unit",
             environment: "jsdom",
             include: ["src/**/*.test.tsx"],
+            exclude: ["src/e2e-tests/**/*"],
         },
     },
     {
@@ -14,7 +15,9 @@ export default defineWorkspace([
         test: {
             name: "e2e",
             environment: "node",
-            include: ["src/**/*.e2e.ts"],
+            include: ["src/e2e-tests/**/*.test.ts"],
+            fileParallelism: false,
+            maxConcurrency: 1,
         },
     },
 ])
