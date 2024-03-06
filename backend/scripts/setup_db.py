@@ -64,6 +64,11 @@ def main():
         )
     else:
         if database_already_exists:
+            response = input(f'Database "{DB_NAME}" already exists. Delete all data? [y/N] ')
+            if response.lower() != "y":
+                print("Aborting")
+                return
+
             # Drop the database
             cursor.execute(
                 sql.SQL(
