@@ -77,32 +77,30 @@ export default class PortalApi {
             return requestConfig
         })
 
-        // log all errors
-        if (logResponses) {
-            this.axiosInstance.interceptors.response.use(
-                (response) =>
-                    // Any status code that lie within the range of 2xx cause this function to trigger
-                    // console.log(response)
-                    response,
-                (error) => {
-                    // Any status codes that falls outside the range of 2xx cause this function to trigger
-                    console.error(error)
+        this.axiosInstance.interceptors.response.use(
+            (response) =>
+                // Any status code that lie within the range of 2xx cause this function to trigger
+                // console.log(response)
+                response,
+            (error) => {
+                // Any status codes that falls outside the range of 2xx cause this function to trigger
 
-                    // Invalidate token if it results in HTTP 401
-                    if (
-                        error.request?.status === 401 &&
-                        localStorage.getItem("token") !== null
-                    ) {
-                        localStorage.removeItem("token")
-                        // Reload page to remove stale information
-                        window.location.reload()
-                        return
-                    }
+                if (logResponses) console.error(error)
 
-                    throw error
+                // Invalidate token if it results in HTTP 401
+                if (
+                    error.request?.status === 401 &&
+                    localStorage.getItem("token") !== null
+                ) {
+                    localStorage.removeItem("token")
+                    // Reload page to remove stale information
+                    window.location.reload()
+                    return
                 }
-            )
-        }
+
+                throw error
+            }
+        )
     }
 
     getClientOrgs = async (): Promise<ClientOrg[]> =>
