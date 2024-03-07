@@ -64,7 +64,9 @@ def main():
         )
     else:
         if database_already_exists:
-            response = input(f'Database "{DB_NAME}" already exists. Delete all data? [y/N] ')
+            response = input(
+                f'Database "{DB_NAME}" already exists. Delete all data? [y/N] '
+            )
             if response.lower() != "y":
                 print("Aborting")
                 return
@@ -115,7 +117,8 @@ def main():
             """
                 ).format(
                     pg_connect_user=sql.Identifier(PG_CONNECT_USER),
-                    user=sql.Identifier(USER))
+                    user=sql.Identifier(USER),
+                )
             )
             print(f'Successfully dropped user "{USER}"')
 
@@ -161,12 +164,11 @@ def main():
             """
             GRANT CREATE ON SCHEMA public TO {user};
             """
-        ).format(
-            user=sql.Identifier(USER)
-        )
+        ).format(user=sql.Identifier(USER))
     )
     cursor.close()
     conn.close()
+
 
 if __name__ == "__main__":
     main()

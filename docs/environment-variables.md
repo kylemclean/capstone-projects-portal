@@ -5,6 +5,9 @@ should be set. They can be set by creating the file `backend/.env` and adding th
 contents.
 
 ```shell
+# The base URL that the frontend will be accessible at.
+FRONTEND_BASE_URL=http://localhost:3000
+
 # These are the PostgreSQL database credentials used for the portal backend.
 PORTAL_DB_DATABASE=portal
 PORTAL_DB_USER=portal
@@ -26,12 +29,6 @@ GITHUB_CLIENT_SECRET=
 EMAIL_HOST=
 EMAIL_HOST_USER=
 EMAIL_HOST_PASSWORD=
-# URL template for account activations (used for account activation emails)
-# {activation_key} will automatically be replaced with the activation key
-ACTIVATION_URL_TEMPLATE=http://cmput401.ca/activate/{activation_key}
-# URL template for password resets (used for password reset emails)
-# {reset_key} will automatically be replaced with the reset key
-RESET_PASSWORD_URL_TEMPLATE=http://cmput401.ca/reset-password/{reset_key}
 
 # ----------
 # The following environment variables are relevant only in development environments.

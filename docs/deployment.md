@@ -100,11 +100,6 @@ PORTAL_DB_USER=portaluser
 PORTAL_DB_PASSWORD=<new password>
 
 DJANGO_SECRET_KEY=<secret key you generated earlier>
-
-# URL template for account activations (used for account activation emails)
-ACTIVATION_URL_TEMPLATE=http://cmput401.ca/activate/{activation_key}
-# URL template for password resets (used for password reset emails)
-RESET_PASSWORD_URL_TEMPLATE=http://cmput401.ca/reset-password/{reset_key}
 ```
 
 7. Setup the postgres DB

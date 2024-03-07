@@ -114,10 +114,8 @@ class UserModelTest(TestCase):
         # Keep track of the number of emails sent before each test
         self.num_sent_emails_before = len(mail.outbox)
 
-        # Set the ACTIVATION_URL_TEMPLATE to a known value
-        settings.ACTIVATION_URL_TEMPLATE = (
-            "http://example.com/activate/{activation_key}"
-        )
+        # Set the FRONTEND_BASE_URL to a known value
+        settings.FRONTEND_BASE_URL = "http://example.com"
 
     def test_creating_user_with_password(self):
         # Try to create a user with a password

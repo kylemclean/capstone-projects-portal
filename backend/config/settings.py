@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from urllib.parse import urlparse
 
 from environ import Env
 
@@ -33,9 +34,12 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # False if not in os.environ
 DEBUG = env("DJANGO_DEBUG", default=False)
 
-# Localhost and Cybera instance IPs
+FRONTEND_BASE_URL = env("FRONTEND_BASE_URL", default="http://localhost:3000")
+parsed_frontend_base_url = urlparse(FRONTEND_BASE_URL)
+
+frontend_host = parsed_frontend_base_url.hostname
 ALLOWED_HOSTS = [
-    "cmput401.ca",
+    frontend_host,
 ] + (["localhost", "127.0.0.1", "[::1]"] if DEBUG else [])
 
 
@@ -157,9 +161,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
 else:
-    CORS_ALLOWED_ORIGINS = [
-        "http://cmput401.ca",
-    ]
+    frontend_origin = (
+        f"{parsed_frontend_base_url.scheme}://{parsed_frontend_base_url.netloc}"
+    )
+    CORS_ALLOWED_ORIGINS = [frontend_origin]
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
@@ -189,15 +194,6 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
 # GitHub OAuth2 keys
 GITHUB_CLIENT_ID = env("GITHUB_CLIENT_ID", default="")
 GITHUB_CLIENT_SECRET = env("GITHUB_CLIENT_SECRET", default="")
-
-# Frontend URLs
-ACTIVATION_URL_TEMPLATE = env(
-    "ACTIVATION_URL_TEMPLATE", default="http://localhost:3000/activate/{activation_key}"
-)
-RESET_PASSWORD_URL_TEMPLATE = env(
-    "RESET_PASSWORD_URL_TEMPLATE",
-    default="http://localhost:3000/reset-password/{reset_key}",
-)
 
 # Test runner
 TEST_RUNNER = "config.test_runner.TestRunner"

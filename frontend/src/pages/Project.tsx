@@ -296,7 +296,7 @@ export default function ViewProject(): JSX.Element {
     const { id }: { id: string } = useParams()
     const [project, setProject] = useState<Project | undefined>(undefined)
     const theme = useTheme()
-    const shareURL = `cmput401.ca/projects/${id}`
+    const shareUrl = `${window.location.origin}/projects/${id}`
 
     // get the page's id and store it in a variable called pageId
     const { id: pageId }: { id: string } = useParams()
@@ -739,13 +739,13 @@ export default function ViewProject(): JSX.Element {
                                     spacing={2}
                                     sx={{ paddingTop: "5px" }}
                                 >
-                                    <LinkedinShareButton url={shareURL}>
+                                    <LinkedinShareButton url={shareUrl}>
                                         <LinkedinIcon size={25} />
                                     </LinkedinShareButton>
-                                    <FacebookShareButton url={shareURL}>
+                                    <FacebookShareButton url={shareUrl}>
                                         <FacebookIcon size={25} />
                                     </FacebookShareButton>
-                                    <TwitterShareButton url={shareURL}>
+                                    <TwitterShareButton url={shareUrl}>
                                         <TwitterIcon size={25} />
                                     </TwitterShareButton>
                                 </Stack>

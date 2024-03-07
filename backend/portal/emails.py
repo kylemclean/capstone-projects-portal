@@ -20,9 +20,8 @@ def send_activation_email(user: "User"):
         raise ValueError("User is already activated")
 
     subject = "CMPUT 401 Projects Portal Account Activation"
-    activation_url = settings.ACTIVATION_URL_TEMPLATE.format(
-        activation_key=user.activation_key
-    )
+    activation_url = f"{settings.FRONTEND_BASE_URL}/activate/{user.activation_key}"
+
     message = dedent(
         f"""
         Hello {user.name},
@@ -48,9 +47,10 @@ def send_password_reset_email(user: "User", reset_request: "PasswordResetRequest
     assert reset_request.user == user
 
     subject = "Reset your password for the CMPUT 401 Projects Portal"
-    reset_password_url = settings.RESET_PASSWORD_URL_TEMPLATE.format(
-        reset_key=reset_request.key
+    reset_password_url = (
+        f"{settings.FRONTEND_BASE_URL}/reset-password/{reset_request.key}"
     )
+
     message = dedent(
         f"""
         Hello {user.name},
