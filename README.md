@@ -1,86 +1,144 @@
 # Capstone Projects Portal
 
-## Setup
+The Capstone Projects Portal is a web portal that showcases projects built by students.
+It is the basis of the [CMPUT 401 Projects Portal](https://cmput401.ca).
 
-### Prerequisites
+This repository contains the source code for the frontend and backend of the portal.
+The frontend is a single-page application built with React.
+The backend is a Django server that uses Django REST framework. It stores data in a PostgreSQL database.
 
-1. Python v3.9
-2. Node v14 / npm v6
-3. PostgreSQL v13
+## Setting up a development environment
 
-### Installation
+### Dependencies
 
-Clone the repo.
+The Capstone Projects Portal server is tested using the following dependencies:
+
+- Python 3.11
+- Node 20 / npm 10
+- PostgreSQL 16
+
+### Dev container
+
+A [dev container](https://code.visualstudio.com/docs/devcontainers/containers) is provided.
+If you use VS Code and have Docker installed, this might be the easiest way to set up a development environment.
+It includes the appropriate versions of Python and Node, as well as a PostgreSQL container.
+
+To use the dev container, open the repo in VS Code and make sure the Dev Containers extension is installed.
+Press F1 and run the "Dev Containers: Open Folder in Container" command. The terminal in VS Code will be attached
+to the dev container, and a PostgreSQL container will be accessible on localhost:5432.
+
+You do not have to use a dev container for your development environment.
+Just ensure the appropriate versions of the above dependencies are installed and properly configured with the project.
+
+### Configuring the environment
+
+[There are some environment variables that need to be set](docs/environment-variables.md)
+for the backend and frontend to work. You can create `backend/.env` and `frontend/.env`
+and set the needed environment variables there.
+
+### Initial setup of development servers
+
+1. Install all dependencies. This will install all Python and npm packages for the backend and frontend.
 
 ```
-git clone https://github.com/open-uofa/capstone-projects-portal
+npm run install-all-dependencies
 ```
 
-Configure your `backend/.env` file settings appropriately.
-
-Install all dependencies.
-
-```
-npm run-script install-all-dependencies
-```
-
-Reset the database.
+2. Initialize the backend database. Using the environment variables in `backend/.env`, this will
+   connect to the PostgreSQL server, create the necessary database and user, and apply migrations.
+   Note that if you re-run this command, existing data in the portal database will be lost.
 
 ```
-npm run-script reset-database
+npm run reset-database
 ```
 
-Navigate to the backend folder and create a superuser.
+3. Optionally, import test data into the database so the portal has some content.
 
 ```
-cd backend && python manage.py createsuperuser
+npm run import-dummy-data
 ```
 
-## Usage
+4. Optionally, create an admin user account on the portal.
 
-### Server Commands
+```
+cd backend && pipenv run python manage.py createsuperuser
+```
 
-To launch the project, you could choose to:
-- start the frontend server individually
-- start the backend server individually
-- start both servers concurrently
+## Running development servers
+
+To start both the backend and frontend dev servers concurrently, run the following command:
+
+```
+npm run start-servers
+```
 
 To start the frontend server individually, run the following command:
 
 ```
-npm run-script start-frontend
+npm run start-frontend
 ```
 
 To start the backend server individually, run the following command:
 
 ```
-npm run-script start-backend
+npm run start-backend
 ```
 
-To start both servers concurrently, run the following command:
+## Running tests
+
+To run all tests for the backend and frontend, run the following command:
 
 ```
-npm run-script start-servers
+npm run test-all
 ```
+
+To run just the backend tests, run:
+
+```
+npm run test-backend
+```
+
+To run just the frontend tests, run:
+
+```
+npm run test-frontend
+```
+
+To run just the frontend unit tests, run:
+
+```
+cd frontend && npm run test:unit
+```
+
+To run just the frontend end-to-end tests, run:
+
+```
+cd frontend && npm run test:e2e
+```
+
+## Building and deployment
+
+[See this document](docs/deployment.md) for an outline of how the portal backend and frontend
+could be deployed.
 
 ## Authors
 
 Developers:
 
-* Alisha Crasta
-* Andrews Essilfie
-* Ayo Akindele
-* Kyle McLean
-* Natasha Osmani
-* Will Fenton
+- Alisha Crasta
+- Andrews Essilfie
+- Ayo Akindele
+- Kyle McLean
+- Natasha Osmani
+- Will Fenton
 
 Instructors:
-* Mohayeminul Islam (TA)
-* Ildar Akhmetov
+
+- Mohayeminul Islam (TA)
+- Ildar Akhmetov
 
 ## License
 
 This project is licensed under the MIT license.
 
 It is an open-source project, as part of the University of Alberta's Student Open-Source Initiative.
-

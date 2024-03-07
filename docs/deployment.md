@@ -29,7 +29,7 @@ sudo apt update && sudo apt upgrade && sudo apt autoremove
 ```shell
 sudo apt install python3-dev python3-pip pipenv libpq-dev postgresql postgresql-contrib nginx curl npm
 sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt install python3.9
+sudo apt install python3.11
 ```
 
 ## Initial Deploy
