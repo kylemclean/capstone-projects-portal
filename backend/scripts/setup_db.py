@@ -31,7 +31,7 @@ def main():
     # Read name of database, user, and password to connect to the PostgreSQL server with
     PG_CONNECT_DB_NAME = env("PG_CONNECT_DATABASE", default="postgres")
     PG_CONNECT_USER = env("PG_CONNECT_USER", default="postgres")
-    PG_CONNECT_PASSWORD = env("PG_CONNECT_PASSWORD", default="")
+    PG_CONNECT_PASSWORD = env("PG_CONNECT_PASSWORD", default="postgres")
 
     # Read name of database, user, and password to create from .env
     DB_NAME = env("PORTAL_DB_DATABASE")
