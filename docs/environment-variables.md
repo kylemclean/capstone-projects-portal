@@ -29,23 +29,25 @@ GITHUB_CLIENT_SECRET=
 EMAIL_HOST=
 EMAIL_HOST_USER=
 EMAIL_HOST_PASSWORD=
+```
 
-# ----------
-# The following environment variables are relevant only in development environments.
+The following backend environment variables are relevant only in development environments:
+
+```shell
 DJANGO_DEBUG=1
 
 # The reset-database script will connect to the PostgreSQL server specified by
 # PORTAL_DB_HOST and PORTAL_DB_PORT and will use the following credentials to
 # create the database and user specified with PORTAL_DB_DATABASE,
 # PORTAL_DB_USER, and PORTAL_DB_PASSWORD.
-PG_CONNECT_DATABASE=
-PG_CONNECT_USER=
+PG_CONNECT_DATABASE=postgres
+PG_CONNECT_USER=postgres
 PG_CONNECT_PASSWORD=
 ```
 
 # Frontend environment variables
 
-For backend deployment and development environments, the following environment variables
+For frontend deployment and development environments, the following environment variables
 should be set. They can be set by creating the file `frontend/.env` and adding the following
 contents.
 

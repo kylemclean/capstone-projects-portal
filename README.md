@@ -38,13 +38,16 @@ and set the needed environment variables there.
 
 ### Initial setup of development servers
 
-1. Install all dependencies. This will install all Python and npm packages for the backend and frontend.
+1. Ensure that `backend/.env` and `frontend/.env` exist and are configured according to the
+   [Configuring the environment](#configuring-the-environment) section.
+
+2. Install all dependencies. This will install all Python and npm packages for the backend and frontend.
 
 ```
 npm run install-all-dependencies
 ```
 
-2. Initialize the backend database. Using the environment variables in `backend/.env`, this will
+3. Initialize the backend database. Using the environment variables in `backend/.env`, this will
    connect to the PostgreSQL server, create the necessary database and user, and apply migrations.
    Note that if you re-run this command, existing data in the portal database will be lost.
 
@@ -52,13 +55,13 @@ npm run install-all-dependencies
 npm run reset-database
 ```
 
-3. Optionally, import test data into the database so the portal has some content.
+4. Optionally, import test data into the database so the portal has some content.
 
 ```
 npm run import-dummy-data
 ```
 
-4. Optionally, create an admin user account on the portal.
+5. Optionally, create an admin user account on the portal.
 
 ```
 cd backend && pipenv run python manage.py createsuperuser
