@@ -24,9 +24,9 @@ def main():
     env.read_env(env_file=BASE_DIR / ".env")
 
     # Read the host address and port from .env
-    # If none is specified, localhost:5432 or UNIX domain sockets are used
-    HOST = env("PORTAL_DB_HOST", default=None)
-    PORT = env("PORTAL_DB_PORT", default=None)
+    # If none is specified, localhost:5432 is used
+    HOST = env("PORTAL_DB_HOST", default="localhost")
+    PORT = env("PORTAL_DB_PORT", default=5432)
 
     # Read name of database, user, and password to connect to the PostgreSQL server with
     PG_CONNECT_DB_NAME = env("PG_CONNECT_DATABASE", default="postgres")
