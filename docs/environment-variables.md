@@ -11,7 +11,7 @@ FRONTEND_BASE_URL=http://localhost:3000
 # These are the PostgreSQL database credentials used for the portal backend.
 PORTAL_DB_DATABASE=portal
 PORTAL_DB_USER=portal
-PORTAL_DB_PASSWORD=
+PORTAL_DB_PASSWORD=portal
 PORTAL_DB_HOST=localhost
 PORTAL_DB_PORT=5432
 
@@ -42,7 +42,7 @@ DJANGO_DEBUG=1
 # PORTAL_DB_USER, and PORTAL_DB_PASSWORD.
 PG_CONNECT_DATABASE=postgres
 PG_CONNECT_USER=postgres
-PG_CONNECT_PASSWORD=
+PG_CONNECT_PASSWORD=postgres
 ```
 
 # Frontend environment variables

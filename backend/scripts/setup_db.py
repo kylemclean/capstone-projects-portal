@@ -26,7 +26,7 @@ def main():
     # Read the host address and port from .env
     # If none is specified, localhost:5432 is used
     HOST = env("PORTAL_DB_HOST", default="localhost")
-    PORT = env("PORTAL_DB_PORT", default=5432)
+    PORT = env("PORTAL_DB_PORT", default="5432")
 
     # Read name of database, user, and password to connect to the PostgreSQL server with
     PG_CONNECT_DB_NAME = env("PG_CONNECT_DATABASE", default="postgres")
@@ -34,9 +34,12 @@ def main():
     PG_CONNECT_PASSWORD = env("PG_CONNECT_PASSWORD", default="postgres")
 
     # Read name of database, user, and password to create from .env
-    DB_NAME = env("PORTAL_DB_DATABASE")
-    USER = env("PORTAL_DB_USER")
-    PASSWORD = env("PORTAL_DB_PASSWORD")
+    DB_NAME = env("PORTAL_DB_DATABASE", default="portal")
+    USER = env("PORTAL_DB_USER", default="portal")
+    PASSWORD = env("PORTAL_DB_PASSWORD", default="portal")
+
+    print(f'Connecting to Postgres server {HOST}:{PORT} with database "{PG_CONNECT_DB_NAME}" and user "{PG_CONNECT_USER}"')
+    print(f'Will create database "{DB_NAME}" and user "{USER}"')
 
     # Connect to database named 'postgres'
     conn = psycopg.connect(
