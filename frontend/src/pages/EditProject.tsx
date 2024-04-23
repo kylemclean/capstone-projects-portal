@@ -101,7 +101,7 @@ export default function EditProject(): JSX.Element {
             .then((projectResult) => {
                 setProject(projectResult)
                 // Set the initial project form values to the project data
-                setTimeout(() => reset(projectResult), 0)
+                reset(projectResult)
 
                 // Set the tags to the project's tags
                 tagsVar.length = 0

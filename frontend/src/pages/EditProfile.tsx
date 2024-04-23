@@ -87,7 +87,7 @@ export default function EditProfile(): JSX.Element {
                     linkedin_link: userData.linkedin_link,
                 }
 
-                setTimeout(() => reset(userDataObject), 0)
+                reset(userDataObject)
 
                 // nullify the image if the image link is broken
                 portalApiInstance
