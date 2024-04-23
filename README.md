@@ -119,6 +119,10 @@ To run just the frontend end-to-end tests, run:
 cd frontend && npm run test:e2e
 ```
 
+> [!NOTE]
+> To run frontend end-to-end tests, Google Chrome or Chromium must be installed.
+> You can install it on the dev container or a Debian system by running `cd frontend && npm run test:e2e-install-browsers`
+
 ## Building and deployment
 
 [See this document](docs/deployment.md) for an outline of how the portal backend and frontend
