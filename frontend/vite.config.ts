@@ -10,6 +10,7 @@ export default defineConfig({
         outDir: "build",
     },
     server: {
+        host: true,
         port: Number(process.env.VITE_PORT || 3000),
     },
     test: {
