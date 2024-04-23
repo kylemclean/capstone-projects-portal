@@ -61,7 +61,6 @@ exports[`matches snapshot 1`] = `
                 </legend>
               </fieldset>
             </div>
-            
           </div>
           <div
             class="MuiFormControl-root MuiFormControl-marginDense MuiFormControl-fullWidth MuiTextField-root css-1ldlpx-MuiFormControl-root-MuiTextField-root"
@@ -98,11 +97,10 @@ exports[`matches snapshot 1`] = `
                 </legend>
               </fieldset>
             </div>
-            
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth css-1nelln8-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
-            id="mui-1"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth css-1nelln8-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            id=":r2:"
             tabindex="0"
             type="submit"
           >

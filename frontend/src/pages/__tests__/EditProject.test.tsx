@@ -4,8 +4,6 @@ import { Route, MemoryRouter, useParams } from "react-router-dom"
 // import API mocking utilities from Mock Service Worker
 import { http } from "msw"
 import { setupServer } from "msw/node"
-// add custom jest matchers from jest-dom
-import "@testing-library/jest-dom/extend-expect"
 import Project, { Term, ProjectType } from "../../models/project"
 import ClientOrgShort from "../../models/client-org-short"
 import ClientOrgType from "../../models/client-org-type"

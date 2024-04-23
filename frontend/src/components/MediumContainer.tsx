@@ -3,7 +3,7 @@ import * as React from "react"
 import { Box, Paper, Container } from "@mui/material"
 
 export default function MediumContainer(
-    props: React.PropsWithChildren<React.ReactNode>
+    props: React.PropsWithChildren
 ): JSX.Element {
     const { children } = props
     return (

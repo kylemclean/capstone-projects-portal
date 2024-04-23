@@ -174,4 +174,6 @@ it("handles unsuccessful login with GitHub due to unknown user", async () => {
     await driver.quit()
 })
 
-afterAll(() => server.close())
+afterAll(() => {
+    server.close()
+})

@@ -427,8 +427,8 @@ export default function ImportPage(): JSX.Element | null {
                             highlighted
                                 ? "#C6FFC6"
                                 : csvFile !== undefined
-                                ? "#DDFFDD"
-                                : "#FCFCFC"
+                                  ? "#DDFFDD"
+                                  : "#FCFCFC"
                         }`,
                         border: `1px solid #007C41`,
                         borderRadius: "5px",

@@ -1,6 +1,5 @@
 import React from "react"
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
-import "@testing-library/jest-dom/extend-expect"
 import { Route, MemoryRouter } from "react-router-dom"
 // import API mocking utilities from Mock Service Worker
 import { http } from "msw"

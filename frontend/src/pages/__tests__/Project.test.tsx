@@ -1,6 +1,5 @@
 import React from "react"
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
-import "@testing-library/jest-dom/extend-expect"
 import { Route, MemoryRouter, useParams } from "react-router-dom"
 import { setupServer } from "msw/node"
 import { http } from "msw"
