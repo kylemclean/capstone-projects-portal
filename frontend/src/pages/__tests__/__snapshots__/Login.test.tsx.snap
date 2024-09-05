@@ -43,7 +43,7 @@ exports[`matches snapshot 1`] = `
           />
         </button>
         <div
-          class="MuiDivider-root MuiDivider-fullWidth MuiDivider-withChildren css-9pln0v-MuiDivider-root"
+          class="MuiDivider-root MuiDivider-fullWidth MuiDivider-withChildren css-kjton7-MuiDivider-root"
           role="separator"
         >
           <span
