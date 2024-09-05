@@ -11,7 +11,7 @@ The backend is a Django server that uses Django REST framework. It stores data i
 
 ### Dependencies
 
-The Capstone Projects Portal server is tested using the following dependencies:
+The Capstone Projects Portal server runs with the following dependencies:
 
 - Python 3.11
 - Node 20 / npm 10
@@ -20,15 +20,16 @@ The Capstone Projects Portal server is tested using the following dependencies:
 ### Dev container
 
 A [dev container](https://code.visualstudio.com/docs/devcontainers/containers) is provided.
-If you use VS Code and have Docker installed, this might be the easiest way to set up a development environment.
+If you use VS Code and have Docker installed, this can be an easier way to set up a development environment.
 It includes the appropriate versions of Python and Node, as well as a PostgreSQL container.
 
-To use the dev container, open the repo in VS Code and make sure the Dev Containers extension is installed.
-Press F1 and run the "Dev Containers: Open Folder in Container" command. The terminal in VS Code will be attached
-to the dev container, and a PostgreSQL container will be accessible on localhost:5432.
+You do not have to use a dev container for your development environment. If you aren't using a dev container,
+just ensure the appropriate versions of the above dependencies are installed and properly configured with the project.
 
-You do not have to use a dev container for your development environment.
-Just ensure the appropriate versions of the above dependencies are installed and properly configured with the project.
+To use the dev container, open the repo in VS Code and make sure Docker and the
+[Dev Containers extension](vscode:extension/ms-vscode-remote.remote-containers) is installed.
+Press F1 and run the "Dev Containers: Reopen in Container" command. The terminal in VS Code will be attached
+to the dev container, and a PostgreSQL container will be accessible on localhost:5432.
 
 ### Configuring the environment
 
