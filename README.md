@@ -39,10 +39,15 @@ and set the needed environment variables there.
 
 ### Initial setup of development servers
 
+> [!NOTE]
+> If you are using a dev container for your development environment,
+> make sure to run commands in the VS Code terminal attached to the dev container.
+
 1. Ensure that `backend/.env` and `frontend/.env` exist and are configured according to the
    [Configuring the environment](#configuring-the-environment) section.
 
-2. Install all dependencies. This will install all Python and npm packages for the backend and frontend.
+2. Run this command in the root of the repo to install all dependencies.
+   This will install all Python and npm packages for the backend and frontend.
 
 ```
 npm run install-all-dependencies
@@ -70,19 +75,19 @@ cd backend && pipenv run python manage.py createsuperuser
 
 ## Running development servers
 
-To start both the backend and frontend dev servers concurrently, run the following command:
+To start both the backend and frontend dev servers concurrently, run this command in the root of the repo:
 
 ```
 npm run start-servers
 ```
 
-To start the frontend server individually, run the following command:
+To start the frontend server individually, run this command in the root of the repo:
 
 ```
 npm run start-frontend
 ```
 
-To start the backend server individually, run the following command:
+To start the backend server individually, run this command in the root of the repo:
 
 ```
 npm run start-backend
@@ -90,31 +95,31 @@ npm run start-backend
 
 ## Running tests
 
-To run all tests for the backend and frontend, run the following command:
+To run all tests for the backend and frontend, run this command in the root of the repo:
 
 ```
 npm run test-all
 ```
 
-To run just the backend tests, run:
+To run just the backend tests, run this command in the root of the repo:
 
 ```
 npm run test-backend
 ```
 
-To run just the frontend tests, run:
+To run just the frontend tests, run this command in the root of the repo:
 
 ```
 npm run test-frontend
 ```
 
-To run just the frontend unit tests, run:
+To run just the frontend unit tests, run this command:
 
 ```
 cd frontend && npm run test:unit
 ```
 
-To run just the frontend end-to-end tests, run:
+To run just the frontend end-to-end tests, run this command:
 
 ```
 cd frontend && npm run test:e2e
