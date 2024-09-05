@@ -31,7 +31,7 @@ EMAIL_HOST_USER=
 EMAIL_HOST_PASSWORD=
 ```
 
-The following backend environment variables are relevant only in development environments:
+For development environments, the following backend environment variables should also be set:
 
 ```shell
 DJANGO_DEBUG=1
