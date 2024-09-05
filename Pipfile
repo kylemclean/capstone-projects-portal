@@ -10,7 +10,7 @@ python_version = "3.11"
 allow_prereleases = true
 
 [packages]
-django = "~=5.0"
+django = "~=5.1"
 django-environ = "*"
 "psycopg[binary]" = "*"
 pillow = "*"
