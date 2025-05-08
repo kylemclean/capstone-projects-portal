@@ -24,4 +24,4 @@ To run only the end-to-end tests, run `npm run test:e2e`.
 
 In addition to the automated tests, there is a test fixture that is designed to be representative of real-world data. This fixture can be loaded in the database of a development environment, allowing a tester to perform manual tests of the site's functionality, such as the acceptance tests of each user story.
 
-The realistic test fixture can be loaded into the database by executing `python manage.py loaddata realistic_dummy_data` in the `backend` directory.
+The realistic test fixture can be loaded into the database by executing `npm run import-dummy-data` in the root directory.

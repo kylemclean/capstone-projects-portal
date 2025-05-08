@@ -6,7 +6,7 @@
   "scripts": {
     "precommit": "npm --prefix frontend run lint-staged && pipenv run pre-commit run",
     "reset-database": "cd backend && pipenv run python scripts/setup_db.py --reset && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate",
-    "import-dummy-data": "cd backend && pipenv run python manage.py loaddata portal/fixtures/realistic_dummy_data.json",
+    "import-dummy-data": "cd backend && pipenv run python manage.py loaddata portal/fixtures/realistic_dummy_data.json && mkdir -p build/ && cp -r portal/fixtures/media build/",
     "install-all-dependencies": "pipenv install --dev && npm install && cd frontend && npm install",
     "check-types": "cd frontend && npx tsc --pretty --noEmit",
     "check-format": "cd frontend && npx prettier --check .",
