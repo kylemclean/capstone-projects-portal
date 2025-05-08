@@ -4,7 +4,18 @@ For backend deployment and development environments, the following environment v
 should be set. They can be set by creating the file `backend/.env` and adding the following
 contents.
 
+> [!NOTE]
+> In production environments, do not include the variables in the "DEVELOPMENT VARIABLES" section.
+
+> [!IMPORTANT]
+> The `DJANGO_SECRET_KEY` variable must be set to a random value for the backend to work and be secure.
+> Execute the provided command to generate a suitable value, and put it in between the double-quotes after `DJANGO_SECRET_KEY=`.
+
 ```shell
+# Generate a secret key for the backend by running this command:
+#     pipenv run python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+DJANGO_SECRET_KEY=""
+
 # The base URL that the frontend will be accessible at.
 FRONTEND_BASE_URL=http://localhost:3000
 
@@ -14,10 +25,6 @@ PORTAL_DB_USER=portal
 PORTAL_DB_PASSWORD=portal
 PORTAL_DB_HOST=localhost
 PORTAL_DB_PORT=5432
-
-# Generate a secret key for the backend by running this command:
-#     pipenv run python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
-DJANGO_SECRET_KEY=
 
 # If you want GitHub login to work, set these environment variables according
 # to the details for your GitHub OAuth app.
@@ -29,11 +36,18 @@ GITHUB_CLIENT_SECRET=
 EMAIL_HOST=
 EMAIL_HOST_USER=
 EMAIL_HOST_PASSWORD=
-```
 
-For development environments, the following backend environment variables should also be set:
+##########################################################################
+##########################################################################
+###                                                                    ###
+###  DEVELOPMENT VARIABLES                                             ###
+###                                                                    ###
+###  The environment variables below are only relevant in development  ###
+###  environments. Remove them in production environments.             ###
+###                                                                    ###
+##########################################################################
+##########################################################################
 
-```shell
 DJANGO_DEBUG=1
 
 # The reset-database script will connect to the PostgreSQL server specified by
