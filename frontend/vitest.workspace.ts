@@ -9,6 +9,9 @@ export default defineWorkspace([
             include: ["src/**/*.test.tsx"],
             exclude: ["src/e2e-tests/**/*"],
         },
+        server: {
+            ws: false,
+        },
     },
     {
         extends: "./vite.config.ts",
@@ -18,6 +21,9 @@ export default defineWorkspace([
             include: ["src/e2e-tests/**/*.test.ts"],
             fileParallelism: false,
             maxConcurrency: 1,
+        },
+        server: {
+            ws: false,
         },
     },
 ])
