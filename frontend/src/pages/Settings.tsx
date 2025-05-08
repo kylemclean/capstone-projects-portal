@@ -47,9 +47,6 @@ function SettingsCategory({
         </Box>
     )
 }
-SettingsCategory.defaultProps = {
-    depth: 0,
-}
 
 type InvalidateOtherSessionsState = LoginResult | undefined | "Pending"
 

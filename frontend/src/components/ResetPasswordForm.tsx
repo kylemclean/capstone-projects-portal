@@ -23,7 +23,12 @@ export default function ResetPasswordForm(props: {
     errorReason: string
     requireCurrentPassword?: boolean
 }): JSX.Element {
-    const { onSubmit, buttonText, errorReason, requireCurrentPassword } = props
+    const {
+        onSubmit,
+        buttonText,
+        errorReason,
+        requireCurrentPassword = false,
+    } = props
 
     const schema = yup.object().shape({
         ...{
@@ -151,8 +156,4 @@ export default function ResetPasswordForm(props: {
             </form>
         </>
     )
-}
-
-ResetPasswordForm.defaultProps = {
-    requireCurrentPassword: false,
 }

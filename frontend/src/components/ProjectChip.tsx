@@ -6,7 +6,7 @@ export default function ProjectChip(props: {
     value: string
     onClick?: React.MouseEventHandler<HTMLDivElement>
 }): JSX.Element {
-    const { color, value, onClick } = props
+    const { color, value, onClick = undefined } = props
 
     const theme = useTheme()
 
@@ -23,7 +23,4 @@ export default function ProjectChip(props: {
             onClick={onClick}
         />
     )
-}
-ProjectChip.defaultProps = {
-    onClick: undefined,
 }

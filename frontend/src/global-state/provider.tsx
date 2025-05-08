@@ -19,6 +19,3 @@ export default function GlobalStateProvider({
         </GlobalContext.Provider>
     )
 }
-GlobalStateProvider.defaultProps = {
-    initialState: defaultInitialState,
-}

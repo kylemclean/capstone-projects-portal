@@ -8,7 +8,7 @@ export default function ProjectChipRow(props: {
     project: Project
     clickable?: boolean
 }): JSX.Element {
-    const { project, clickable } = props
+    const { project, clickable = false } = props
 
     const ifClickable = (
         x: React.MouseEventHandler<HTMLDivElement> | undefined
@@ -60,7 +60,4 @@ export default function ProjectChipRow(props: {
             ))}
         </Stack>
     )
-}
-ProjectChipRow.defaultProps = {
-    clickable: false,
 }
