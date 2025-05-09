@@ -409,12 +409,12 @@ export default function EditProject(): JSX.Element {
                             handleTagClick={handleTagClick}
                             minQueryLength={2}
                             maxLength={25}
-                            autofocus={false}
+                            autoFocus={false}
                             allowDeleteFromEmptyInput
                             autocomplete
                             allowUnique
                             allowDragDrop
-                            inline
+                            inputFieldPosition="inline"
                             allowAdditionFromPaste
                             tags={tags}
                         />
