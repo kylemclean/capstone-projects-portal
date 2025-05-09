@@ -15,7 +15,7 @@ The Capstone Projects Portal server runs with the following dependencies:
 
 - Python 3.11
 - Node 20 / npm 10
-- PostgreSQL 16
+- PostgreSQL 17
 
 ### Dev container
 
