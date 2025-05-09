@@ -7,7 +7,7 @@
     "precommit": "npm --prefix frontend run lint-staged && pipenv run pre-commit run",
     "reset-database": "cd backend && pipenv run python scripts/setup_db.py --reset && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate",
     "import-dummy-data": "cd backend && pipenv run python manage.py loaddata portal/fixtures/realistic_dummy_data.json && mkdir -p build/ && cp -r portal/fixtures/media build/",
-    "install-all-dependencies": "pipenv install --dev && npm install && cd frontend && npm install",
+    "install-all-dependencies": "pipenv install --dev && npm install",
     "check-types": "cd frontend && npx tsc --pretty --noEmit",
     "check-format": "cd frontend && npx prettier --check .",
     "check-lint": "cd frontend && npx eslint . --ext ts --ext tsx --ext js --max-warnings 0",
@@ -23,5 +23,8 @@
     "start-frontend": "npm --prefix frontend run start",
     "start-backend": "cd backend && pipenv run python manage.py runserver",
     "start-servers": "npm-run-all --parallel start-frontend start-backend"
-  }
+  },
+  "workspaces": [
+    "frontend"
+  ]
 }
