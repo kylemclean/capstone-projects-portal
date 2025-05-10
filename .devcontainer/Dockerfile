@@ -10,4 +10,6 @@ RUN apt-get update \
     pipenv \
     \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs
+    && apt-get install -y nodejs \
+    \
+    && npx playwright install --with-deps

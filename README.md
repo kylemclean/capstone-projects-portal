@@ -4,8 +4,12 @@ The Capstone Projects Portal is a web portal that showcases projects built by st
 It is the basis of the [CMPUT 401 Projects Portal](https://cmput401.ca).
 
 This repository contains the source code for the frontend and backend of the portal.
-The frontend is a single-page application built with React.
-The backend is a Django server that uses Django REST framework. It stores data in a PostgreSQL database.
+
+The frontend, written in TypeScript, is a single-page application built with React.
+Vite is used as the build tool and development server.
+
+The backend, written in Python, uses Django and Django REST framework. It stores data in a PostgreSQL database.
+Pipenv is used for dependency management.
 
 ## Setting up a development environment
 
@@ -95,11 +99,9 @@ npm run start-backend
 
 ## Running tests
 
-To run all tests for the backend and frontend, run this command in the root of the repo:
+### Backend tests
 
-```
-npm run test-all
-```
+Django unit tests are used for the backend.
 
 To run just the backend tests, run this command in the root of the repo:
 
@@ -107,11 +109,10 @@ To run just the backend tests, run this command in the root of the repo:
 npm run test-backend
 ```
 
-To run just the frontend tests, run this command in the root of the repo:
+### Frontend tests
 
-```
-npm run test-frontend
-```
+Vitest and React Testing Library is used for frontend unit tests, and Playwright is used
+for end-to-end tests.
 
 To run just the frontend unit tests, run this command:
 
@@ -119,15 +120,30 @@ To run just the frontend unit tests, run this command:
 cd frontend && npm run test:unit
 ```
 
-To run just the frontend end-to-end tests, run this command:
+> [!NOTE]
+> To run end-to-end tests with Playwright, web browsers and their dependencies must be installed.
+> They are already installed in the dev container, but you can install them on your system by running the command
+> `npx playwright install --with-deps`. [See the Playwright docs for more information.](https://playwright.dev/docs/browsers)
+
+To run just the end-to-end tests, run this command:
 
 ```
 cd frontend && npm run test:e2e
 ```
 
-> [!NOTE]
-> To run frontend end-to-end tests, Google Chrome or Chromium must be installed.
-> You can install it on the dev container or a Debian system by running `cd frontend && npm run test:e2e-install-browsers`
+To run both the frontend unit tests and the end-to-end tests, run this command in the root of the repo:
+
+```
+npm run test-frontend
+```
+
+### Running all tests
+
+To run all tests for the backend and frontend, run this command in the root of the repo:
+
+```
+npm run test-all
+```
 
 ## Building and deployment
 

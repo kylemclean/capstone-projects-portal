@@ -4,12 +4,20 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ..:/workspace:cached
-    network_mode: service:db
     command: sleep infinity
+    environment:
+      - PORTAL_DB_HOST=localhost
+      - PORTAL_DB_PORT=5432
+      - PLAYWRIGHT_HTML_HOST=0.0.0.0 # Playwright report hosting
+    ports:
+      - 9323:9323 # Playwright report hosting
+      # Uncomment below to expose database to host
+      #- 5432:5432
 
   db:
     image: postgres:17
     restart: unless-stopped
+    network_mode: service:devcontainer
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
