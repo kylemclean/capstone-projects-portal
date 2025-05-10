@@ -7,7 +7,8 @@ RUN apt-get update \
     curl \
     python3 \
     python3-pip \
-    pipenv \
+    \
+    && curl -LsSf https://astral.sh/uv/install.sh | bash \
     \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \

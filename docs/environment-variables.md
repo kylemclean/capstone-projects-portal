@@ -13,7 +13,7 @@ contents.
 
 ```shell
 # Generate a secret key for the backend by running this command:
-#     pipenv run python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+#     uv run python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 DJANGO_SECRET_KEY=""
 
 # The base URL that the frontend will be accessible at.

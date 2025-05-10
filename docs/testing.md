@@ -6,7 +6,7 @@ Our automated test suite consists of backend and frontend tests.
 
 The backend tests use Django's test framework to test the functionality of the backend API. They consist of model tests, which test functions on models and how they react to events, as well as view tests, which test how the API's endpoints respond to valid and invalid requests from users.
 
-The backend tests are located in the `backend/portal/tests` directory. They can be run by executing `pipenv run python manage.py test` in the `backend` directory.
+The backend tests are located in the `backend/portal/tests` directory. They can be run by executing `uv run manage.py test` in the `backend` directory.
 
 ## Frontend tests
 

@@ -41,7 +41,7 @@
     "check-format": "cd .. && npm run-script check-format",
     "check-lint": "cd .. && npm run-script check-lint",
     "format-prettier": "cd .. && npm run-script format-prettier",
-    "format-pipenv": "cd .. && npm run-script format-pipenv",
+    "format-python": "cd .. && npm run-script format-python",
     "check-frontend": "cd .. && npm run-script check-frontend",
     "check-backend": "cd .. && npm run-script check-backend",
     "check-all": "cd .. && npm run-script check-all",

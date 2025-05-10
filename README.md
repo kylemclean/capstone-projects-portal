@@ -9,7 +9,7 @@ The frontend, written in TypeScript, is a single-page application built with Rea
 Vite is used as the build tool and development server.
 
 The backend, written in Python, uses Django and Django REST framework. It stores data in a PostgreSQL database.
-Pipenv is used for dependency management.
+uv is used for dependency management.
 
 ## Setting up a development environment
 
@@ -17,8 +17,8 @@ Pipenv is used for dependency management.
 
 The Capstone Projects Portal server runs with the following dependencies:
 
-- Python 3.11
-- Node 20 / npm 10
+- Python 3.11, uv 0.7.3
+- Node 20, npm 10
 - PostgreSQL 17
 
 ### Dev container
@@ -74,7 +74,7 @@ npm run import-dummy-data
 5. Optionally, create an admin user account on the portal.
 
 ```
-cd backend && pipenv run python manage.py createsuperuser
+cd backend && uv run python manage.py createsuperuser
 ```
 
 ## Running development servers
