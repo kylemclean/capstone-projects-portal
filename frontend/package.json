@@ -53,18 +53,6 @@
     "start-backend": "cd .. && npm run-script start-backend",
     "start-servers": "cd .. && npm run-script start-servers"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@playwright/test": "^1.52.0",
     "@testing-library/jest-dom": "^6.4.2",
