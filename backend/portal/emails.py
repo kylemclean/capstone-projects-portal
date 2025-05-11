@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 if TYPE_CHECKING:
-    from portal.models import PasswordResetRequest, Proposal, User
+    from portal.models import Proposal, User
 
 
 def send_activation_email(user: "User"):
@@ -36,19 +36,16 @@ def send_activation_email(user: "User"):
     send_mail(subject, message, None, [user.email], fail_silently=False)
 
 
-def send_password_reset_email(user: "User", reset_request: "PasswordResetRequest"):
+def send_password_reset_email(user: "User", reset_key: str):
     """
     Sends an email to the user with a link to reset their password.
     """
 
     logging.debug(f"Sending a password reset email to {user.email}")
 
-    # Ensure that the user the reset request is for the correct user
-    assert reset_request.user == user
-
     subject = "Reset your password for the Capstone Projects Portal"
     reset_password_url = (
-        f"{settings.FRONTEND_BASE_URL}/reset-password/{reset_request.key}"
+        f"{settings.FRONTEND_BASE_URL}/reset-password/{reset_key}"
     )
 
     message = dedent(

@@ -5,8 +5,10 @@ from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from django.core.signing import BadSignature, SignatureExpired, TimestampSigner
+from django.utils import timezone
 from portal.emails import send_password_reset_email
-from portal.models import PasswordResetRequest, User
+from portal.models import User
 from portal.views import CurrentUserInfo
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import APIView
@@ -265,6 +267,7 @@ class ResetPasswordView(APIView):
 
         # Set the new password
         user.set_password(new_password)
+        user.last_password_reset_at = timezone.now()
         user.save()
 
         # Try to delete the token for the user so existing sessions are invalidated
@@ -275,12 +278,25 @@ class ResetPasswordView(APIView):
         return successful_login_response(request)
 
     def reset_with_reset_key(self, request: Request, reset_key: str) -> Response:
-        # Get the user associated with the reset key
+        is_valid_request = False
+        
         try:
-            reset_request = PasswordResetRequest.objects.get_usable_request_with_key(
-                key=reset_key
-            )
-        except PasswordResetRequest.DoesNotExist:
+            signer = TimestampSigner()
+            # Reset requests expire after 1 hour
+            reset_request = signer.unsign_object(reset_key, max_age=3600)
+
+            user_id = reset_request['user_id']
+            request_created_at = reset_request['created_at']
+
+            # Get the user associated with the reset key
+            # They must not have reset their password since the request was created
+            # This prevents reset keys from being reused
+            user = User.objects.get(id=user_id, last_password_reset_at__lt=request_created_at)
+            is_valid_request = True
+        except (BadSignature, SignatureExpired, User.DoesNotExist):
+            pass
+            
+        if not is_valid_request:
             return Response(
                 status=400,
                 data={
@@ -290,10 +306,6 @@ class ResetPasswordView(APIView):
             )
 
         response = self.reset_password(request, reset_request.user)
-
-        # Delete the reset key if the password was successfully changed
-        if response.data["success"] is True:
-            reset_request.set_used()
 
         return response
 
@@ -353,7 +365,7 @@ class RequestPasswordResetView(APIView):
     class RequestPasswordResetResponse(Response):
         """
         Response for the RequestPasswordResetView that may generate a
-        PasswordResetRequest and email it to the user when it is closed.
+        reset key and email it to the user when it is closed.
         """
 
         def __init__(self, email: str):
@@ -363,7 +375,7 @@ class RequestPasswordResetView(APIView):
 
         def close(self):
             """
-            If the user exists, generate a ResetPasswordToken and email them a link to
+            If the user exists, generate a reset key and email them a link to
             reset their password.
 
             Doing these checks in the request post handler can leak information about
@@ -376,11 +388,14 @@ class RequestPasswordResetView(APIView):
             except User.DoesNotExist:
                 return
 
-            # Generate a password reset request
-            reset_request = PasswordResetRequest.objects.create(user=user)
+            reset_request = {"user_id": user.id, "created_at": timezone.now()}
+
+            # Generate a password reset key
+            signer = Signer(salt="reset_key")
+            reset_key = signer.sign_object(reset_request)
 
             # Email the user a link to reset their password
-            send_password_reset_email(user, reset_request)
+            send_password_reset_email(user, reset_key)
 
     def post(self, request):
         try:

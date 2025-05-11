@@ -53,6 +53,7 @@ class User(AbstractUser):
     github_username = models.CharField(max_length=60, blank=True)
     github_user_id = models.CharField(max_length=35, null=True, blank=True, unique=True)
     activation_key = models.UUIDField(null=True, unique=True, editable=False)
+    last_password_reset_at = models.DateTimeField(default=timezone.now, editable=False)
 
     def is_student_of(self, project):
         return self in project.students.all()
@@ -228,58 +229,3 @@ class Proposal(models.Model):
 
     def __str__(self):
         return f'<{self.__class__.__name__} id="{self.id}" rep_name="{self.rep_name}">'
-
-
-class PasswordResetRequestManager(models.Manager):
-    def get_usable_request_with_key(self, key: str):
-        """
-        Get a usable PasswordResetRequest instance corresponding with the specified key.
-        Raises a PasswordResetRequest.DoesNotExist exception if no such
-        PasswordResetRequest exists.
-        """
-        instance = super().get(key=key)
-        if instance.is_usable:
-            return instance
-        raise self.model.DoesNotExist
-
-
-class PasswordResetRequest(models.Model):
-    objects = PasswordResetRequestManager()
-
-    # How long the request is valid for
-    VALID_DURATION = timezone.timedelta(hours=1)
-
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    key = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    used_at = models.DateTimeField(null=True)
-
-    @property
-    def is_usable(self) -> bool:
-        """
-        Return True iff the request is not used yet and not expired, False otherwise.
-        """
-        return (
-            self.used_at is None
-            and self.created_at + self.VALID_DURATION > timezone.now()
-        )
-
-    def set_used(self):
-        """
-        Mark the request as used.
-        """
-        self.used_at = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return f"{self.__class__.__name__} {self.id} for user {str(self.user)}"
-
-    @classmethod
-    def prune_unusable_requests(cls):
-        """
-        Prune requests that have expired or are already used.
-        """
-        (
-            cls.objects.filter(created_at__lt=timezone.now() - cls.VALID_DURATION)
-            | cls.objects.filter(used_at__isnull=False)
-        ).delete()

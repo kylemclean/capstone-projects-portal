@@ -4,10 +4,11 @@ from unittest.mock import MagicMock, patch
 
 from django.conf import settings
 from django.core import mail
+from django.core.signing import TimestampSigner
 from django.http.response import HttpResponse
 from django.urls import reverse
 from portal.login_views import LoginView
-from portal.models import PasswordResetRequest, User
+from portal.models import User
 from portal.serializers import UserShortSerializer
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
@@ -599,31 +600,33 @@ class RequestPasswordResetViewTest(APITestCase):
 
     def assert_successful_password_reset_request(
         self, user: User, response: HttpResponse
-    ) -> PasswordResetRequest:
+    ) -> str:
         """
         Asserts that the response indicates success,
-        a PasswordResetRequest instance was created,
+        a password reset key was created,
         and the correct email was sent.
-        Returns the PasswordResetRequest instance that
+        Returns the reset key.
         """
         self.assert_successful_response(response)
 
-        # Assert that the last PasswordResetRequest created for that user is usable
-        password_reset_request = (
-            PasswordResetRequest.objects.filter(user=user)
-            .order_by("-created_at")
-            .first()
-        )
-        self.assertTrue(password_reset_request.is_usable)
-
-        # Assert that an email was sent and it contains the link to reset the password
+        # Assert that an email was sent and it contains a link to reset the password
         self.assertEqual(len(mail.outbox), self.num_sent_emails_before + 1)
         email = mail.outbox[-1]
         self.assertEqual(email.to, [user.email])
-        self.assertIn(
-            f"http://example.com/reset-password/{password_reset_request.key}",
-            email.body,
-        )
+
+        # Find the reset key in the email using regex
+        reset_key_regex = r"http://example.com/reset-password/(.*?)\n"
+        reset_key = re.search(reset_key_regex, email.body).group(1)
+        
+        # Get the reset request from the reset key
+        signer = TimestampSigner()
+        reset_request = signer.unsign_object(reset_key)
+
+        # Assert that the reset key belongs to the user
+        self.assertEqual(reset_request["user_id"], user.id)
+                
+        # Assert that the reset request contains a timestamp
+        self.assertIsNotNone(reset_request["timestamp"])
 
         # Update num_sent_emails_before
         self.num_sent_emails_before = len(mail.outbox)
