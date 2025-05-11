@@ -31,7 +31,7 @@ export default function ViewClientOrg(): JSX.Element {
             <HelmetMetaData
                 title={
                     clientOrg?.name
-                        ? `${clientOrg?.name} | CMPUT 401 Projects Portal`
+                        ? `${clientOrg?.name} | Capstone Projects Portal`
                         : undefined
                 }
             />

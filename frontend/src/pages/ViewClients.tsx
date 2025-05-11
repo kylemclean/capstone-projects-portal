@@ -145,12 +145,12 @@ export default function ViewClients(): JSX.Element {
     return (
         <>
             <HelmetMetaData
-                title="Browse Clients | CMPUT 401 Projects Portal"
+                title="Browse Clients | Capstone Projects Portal"
                 noindex
             />
             <Container maxWidth="sm">
                 <Box sx={{ my: 4 }}>
-                    <PageTitle title="CMPUT 401 Clients" />
+                    <PageTitle title="Capstone Clients" />
                     <Grid container spacing={1}>
                         <Grid item xs={12} md>
                             <SearchBar

@@ -66,7 +66,7 @@ export default function PortalLogo(colorObj: { color: string }): JSX.Element {
                                 fontSize="1.15em"
                                 lineHeight="normal"
                             >
-                                CMPUT 401
+                                CAPSTONE
                             </Typography>
                         </Grid>
                         <Grid

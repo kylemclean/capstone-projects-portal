@@ -135,7 +135,7 @@ export default function SubmitProposal(): JSX.Element {
 
     return (
         <>
-            <HelmetMetaData title="Project Proposal | CMPUT 401 Projects Portal" />
+            <HelmetMetaData title="Project Proposal | Capstone Projects Portal" />
             <MediumContainer>
                 <PageTitle title="Want us to build you an app or web app?" />
                 <Typography

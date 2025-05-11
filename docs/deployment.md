@@ -1,6 +1,6 @@
 # Deployment
 
-This guide covers how to deploy the CMPUT 401 project portal. It is based on
+This guide covers how to deploy the Capstone Projects Portal. It is based on
 [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04)
 from DigitalOcean, so if you are running into issues it may be a good resource.
 

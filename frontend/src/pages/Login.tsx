@@ -121,7 +121,7 @@ export default function Login(): JSX.Element {
 
     return (
         <RequireNotLoggedIn redirectTo={nextUrl}>
-            <HelmetMetaData title="Login | CMPUT 401 Projects Portal" noindex />
+            <HelmetMetaData title="Login | Capstone Projects Portal" noindex />
             <Container maxWidth="sm">
                 <Box sx={{ my: 4 }}>
                     <Paper sx={{ p: 2 }}>

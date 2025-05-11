@@ -16,7 +16,7 @@ export default function ThankYou(): JSX.Element {
     return (
         <>
             <HelmetMetaData
-                title="Thank You | CMPUT 401 Projects Portal"
+                title="Thank You | Capstone Projects Portal"
                 noindex
             />
             <Container maxWidth="md">

@@ -226,7 +226,7 @@ export default function ViewProjects(): JSX.Element {
     return (
         <>
             <HelmetMetaData
-                title="Browse Projects | CMPUT 401 Projects Portal"
+                title="Browse Projects | Capstone Projects Portal"
                 noindex
             />
             <Container sx={{ my: 4 }} maxWidth="md">
@@ -236,7 +236,7 @@ export default function ViewProjects(): JSX.Element {
                     align="center"
                     gutterBottom
                 >
-                    CMPUT 401 Projects
+                    Capstone Projects
                 </Typography>
                 <Grid container spacing={1}>
                     <Grid item xs={12} md>

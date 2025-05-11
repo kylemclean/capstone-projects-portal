@@ -222,7 +222,7 @@ export default function EditClient(): JSX.Element {
             }
         >
             <HelmetMetaData
-                title="Edit Organization | CMPUT 401 Projects Portal"
+                title="Edit Organization | Capstone Projects Portal"
                 noindex
             />
             <Container maxWidth="md">

@@ -338,7 +338,7 @@ export default function ViewProject(): JSX.Element {
                 <HelmetMetaData
                     title={
                         project?.name
-                            ? `${project?.name} | CMPUT 401 Projects Portal`
+                            ? `${project?.name} | Capstone Projects Portal`
                             : undefined
                     }
                 />

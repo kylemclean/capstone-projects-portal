@@ -271,7 +271,7 @@ export default function EditProject(): JSX.Element {
             validate={(user) => !project || canEditProject(user, project)}
         >
             <HelmetMetaData
-                title="Edit Project | CMPUT 401 Projects Portal"
+                title="Edit Project | Capstone Projects Portal"
                 noindex
             />
             {project && (

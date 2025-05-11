@@ -49,7 +49,7 @@ export default function Profile(): JSX.Element {
                 <HelmetMetaData
                     title={
                         user?.name
-                            ? `${user?.name} | CMPUT 401 Projects Portal`
+                            ? `${user?.name} | Capstone Projects Portal`
                             : undefined
                     }
                 />

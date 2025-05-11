@@ -24,7 +24,7 @@ export default function About(): JSX.Element {
 
     return (
         <>
-            <HelmetMetaData title="About | CMPUT 401 Projects Portal" />
+            <HelmetMetaData title="About | Capstone Projects Portal" />
             <Container maxWidth="md">
                 <Box sx={{ my: 4 }}>
                     <PageTitle title={ABOUT_TITLE} />
@@ -36,7 +36,7 @@ export default function About(): JSX.Element {
                         about software engineering.
                     </Typography>
                     <Typography paragraph>
-                        The CMPUT 401 Projects Portal serves as a showcase of
+                        The Capstone Projects Portal serves as a showcase of
                         the projects that the students have completed, and a
                         place to connect with potential clients who may be
                         interested in working with the students.

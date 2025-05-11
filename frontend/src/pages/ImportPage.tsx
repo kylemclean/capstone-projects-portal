@@ -376,7 +376,7 @@ export default function ImportPage(): JSX.Element | null {
 
     return (
         <RequireLoggedIn validate={(currentUser) => currentUser.is_superuser}>
-            <HelmetMetaData title="Import Data | CMPUT 401 Projects Portal" />
+            <HelmetMetaData title="Import Data | Capstone Projects Portal" />
             <Container sx={{ my: 4 }} maxWidth="sm">
                 <Typography
                     variant="h4"

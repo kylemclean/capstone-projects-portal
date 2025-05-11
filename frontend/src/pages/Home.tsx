@@ -21,7 +21,7 @@ export default function Home(): JSX.Element {
 
     return (
         <>
-            <HelmetMetaData title="Home | CMPUT 401 Projects Portal" />
+            <HelmetMetaData title="Home | Capstone Projects Portal" />
             <Container sx={{ my: 4 }}>
                 <Grid container paddingBottom={1} spacing={4}>
                     <Grid item md width="100%">

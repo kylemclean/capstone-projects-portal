@@ -178,8 +178,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "CMPUT 401 Projects Portal API",
-    "DESCRIPTION": "This is the API for the CMPUT 401 Projects Portal.",
+    "TITLE": "Capstone Projects Portal API",
+    "DESCRIPTION": "This is the API for the Capstone Projects Portal.",
     "VERSION": "1.0.0",
 }
 

@@ -37,7 +37,7 @@ export default function Activate(): JSX.Element {
     return (
         <RequireNotLoggedIn>
             <HelmetMetaData
-                title="Activate | CMPUT 401 Projects Portal"
+                title="Activate | Capstone Projects Portal"
                 noindex
             />
             <Container maxWidth="sm">

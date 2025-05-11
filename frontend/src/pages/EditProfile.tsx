@@ -207,7 +207,7 @@ export default function EditProfile(): JSX.Element {
             validate={(currentUser) => canEditUser(currentUser, userId)}
         >
             <HelmetMetaData
-                title="Edit Profile | CMPUT 401 Projects Portal"
+                title="Edit Profile | Capstone Projects Portal"
                 noindex
             />
             <MediumContainer>
