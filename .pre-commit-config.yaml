@@ -5,8 +5,9 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        exclude: ".*?\\.snap$"
+        exclude: "(^frontend/.*|.*?\\.snap$)"
       - id: end-of-file-fixer
+        exclude: "^frontend/.*"
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: check-json
@@ -41,3 +42,4 @@ repos:
         entry: npx biome check --write --files-ignore-unknown=true --no-errors-on-unmatched
         language: system
         types: [text]
+        files: "\\.(jsx?|tsx?|mjs|cjs|mts|cts|jsonc?|css)$"
