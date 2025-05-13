@@ -16,7 +16,7 @@ jobs:
         with:
           options: "--check --diff --color"
           src: "./backend"
-          version: "21.9b0"
+          version: "25.1.0"
 
   flake8:
     runs-on: ubuntu-latest
