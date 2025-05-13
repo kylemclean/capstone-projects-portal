@@ -1,37 +1,36 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import * as React from "react"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { GitHub as GitHubIcon } from "@mui/icons-material"
+import { LoadingButton } from "@mui/lab"
 import {
     Alert,
     AlertTitle,
     Box,
     Button,
     Container,
+    Divider,
+    Link,
     Paper,
     TextField,
-    Divider,
     useTheme,
-    Link,
 } from "@mui/material"
-import { LoadingButton } from "@mui/lab"
-import * as yup from "yup"
-import { yupResolver } from "@hookform/resolvers/yup"
+import { useContext, useState } from "react"
 import {
     Controller,
-    SubmitHandler,
+    type SubmitHandler,
     useForm,
     useFormState,
 } from "react-hook-form"
 import { Link as RouterLink, useLocation } from "react-router-dom"
-import { useContext, useState } from "react"
-import { GitHub as GitHubIcon } from "@mui/icons-material"
-import PageTitle from "../components/PageTitle"
-import { portalApiInstance } from "../api/portal-api"
-import { LoginResult, OAuth2Provider } from "../models/login"
-import GlobalContext from "../global-state/context"
-import HelmetMetaData from "../components/HelmetMetaData"
-import RequireNotLoggedIn from "../components/RequireNotLoggedIn"
+import * as yup from "yup"
 import { githubAuthorizeUrl } from "../api/config"
+import { portalApiInstance } from "../api/portal-api"
+import HelmetMetaData from "../components/HelmetMetaData"
+import PageTitle from "../components/PageTitle"
+import RequireNotLoggedIn from "../components/RequireNotLoggedIn"
+import GlobalContext from "../global-state/context"
+import type { LoginResult, OAuth2Provider } from "../models/login"
 
 function randomNonce(): string {
     return Math.random().toString(36).substring(2)

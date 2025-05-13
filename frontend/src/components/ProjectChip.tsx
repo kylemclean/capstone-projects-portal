@@ -1,5 +1,5 @@
-import * as React from "react"
-import { Chip, ChipTypeMap, useTheme } from "@mui/material"
+import { Chip, type ChipTypeMap, useTheme } from "@mui/material"
+import type * as React from "react"
 
 export default function ProjectChip(props: {
     color: ChipTypeMap["props"]["color"]

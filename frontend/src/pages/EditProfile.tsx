@@ -1,27 +1,25 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import * as React from "react"
-import { useState, useEffect } from "react"
-import {
-    Button,
-    useTheme,
-    TextField,
-    Typography,
-    Box,
-    Avatar,
-} from "@mui/material"
+import { yupResolver } from "@hookform/resolvers/yup"
 import DeleteIcon from "@mui/icons-material/Delete"
 import PersonIcon from "@mui/icons-material/Person"
+import {
+    Avatar,
+    Box,
+    Button,
+    TextField,
+    Typography,
+    useTheme,
+} from "@mui/material"
+import { useEffect, useState } from "react"
+import { Controller, type SubmitHandler, useForm } from "react-hook-form"
 import { Redirect, useHistory, useParams } from "react-router-dom"
-import { SubmitHandler, useForm, Controller } from "react-hook-form"
 import * as yup from "yup"
-import { yupResolver } from "@hookform/resolvers/yup"
 import { portalApiInstance } from "../api/portal-api"
-import IFormInputs from "../models/user-form"
-import PageTitle from "../components/PageTitle"
-import MediumContainer from "../components/MediumContainer"
 import HelmetMetaData from "../components/HelmetMetaData"
+import MediumContainer from "../components/MediumContainer"
+import PageTitle from "../components/PageTitle"
 import RequireLoggedIn from "../components/RequireLoggedIn"
 import { canEditUser } from "../models/current-user-info"
+import type IFormInputs from "../models/user-form"
 
 // schema that defines the types of values that the form should have
 const schema = yup.object().shape({

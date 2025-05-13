@@ -1,24 +1,20 @@
-import * as React from "react"
-
+// import react-testing methods
+import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 // import API mocking utilities from Mock Service Worker
 import { http } from "msw"
 import { setupServer } from "msw/node"
 
-// import react-testing methods
-import { render, fireEvent, waitFor, screen } from "@testing-library/react"
-
 // the component to test
 import { MemoryRouter, Route } from "react-router-dom"
-import LoginPage from "../Login"
-
-import {
+import { axiosConfig } from "../../api/config"
+import GlobalStateProvider from "../../global-state/provider"
+import type State from "../../global-state/state"
+import type {
     LoginResult,
     LoginWithEmailAndPasswordRequest,
 } from "../../models/login"
-import GlobalStateProvider from "../../global-state/provider"
-import State from "../../global-state/state"
 import { LoginStatus, MockHomePage } from "../../test-utils"
-import { axiosConfig } from "../../api/config"
+import LoginPage from "../Login"
 
 // Test user data
 const userEmail = "user@example.com"

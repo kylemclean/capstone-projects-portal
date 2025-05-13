@@ -1,5 +1,5 @@
 import { test as base, expect } from "@playwright/test"
-import { LoginResult } from "../models/login"
+import type { LoginResult } from "../models/login"
 
 const test = base.extend({
     page: async ({ page }, use) => {

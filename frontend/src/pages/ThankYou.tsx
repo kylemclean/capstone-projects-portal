@@ -1,14 +1,13 @@
-import * as React from "react"
+import CheckIcon from "@mui/icons-material/Check"
 import {
-    Box,
-    Container,
-    Typography,
     Avatar,
-    useTheme,
+    Box,
     Card,
     CardContent,
+    Container,
+    Typography,
+    useTheme,
 } from "@mui/material"
-import CheckIcon from "@mui/icons-material/Check"
 import HelmetMetaData from "../components/HelmetMetaData"
 
 export default function ThankYou(): JSX.Element {

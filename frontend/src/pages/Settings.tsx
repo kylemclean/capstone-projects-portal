@@ -1,13 +1,13 @@
+import { Box, Button, Container, Paper, Typography } from "@mui/material"
 import * as React from "react"
 import { useContext, useState } from "react"
-import { Box, Button, Container, Paper, Typography } from "@mui/material"
 import { Link as RouterLink } from "react-router-dom"
-import PageTitle from "../components/PageTitle"
 import { portalApiInstance } from "../api/portal-api"
-import GlobalContext from "../global-state/context"
-import { LoginResult } from "../models/login"
-import SnackbarAlert from "../components/SnackbarAlert"
+import PageTitle from "../components/PageTitle"
 import RequireLoggedIn from "../components/RequireLoggedIn"
+import SnackbarAlert from "../components/SnackbarAlert"
+import GlobalContext from "../global-state/context"
+import type { LoginResult } from "../models/login"
 
 interface SettingsCategoryProps {
     title: string

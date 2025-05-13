@@ -1,8 +1,7 @@
-import React from "react"
 import { render } from "@testing-library/react"
-import App from "../App"
-import { setupServer } from "msw/node"
 import { http } from "msw"
+import { setupServer } from "msw/node"
+import App from "../App"
 import { axiosConfig } from "../api/config"
 
 const server = setupServer(

@@ -1,5 +1,5 @@
-import * as React from "react"
-import { Alert, AlertColor, Snackbar } from "@mui/material"
+import { Alert, type AlertColor, Snackbar } from "@mui/material"
+import type * as React from "react"
 
 export default function SnackbarAlert(props: {
     open: boolean

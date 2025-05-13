@@ -1,16 +1,15 @@
-import * as React from "react"
-import { useContext, useState } from "react"
 import { Box, Container, Paper, Typography } from "@mui/material"
-import { SubmitHandler } from "react-hook-form"
+import { useContext, useState } from "react"
+import type { SubmitHandler } from "react-hook-form"
 import { useParams } from "react-router-dom"
-import PageTitle from "../components/PageTitle"
 import { portalApiInstance } from "../api/portal-api"
-import GlobalContext from "../global-state/context"
-import ResetPasswordForm, {
-    ResetPasswordFormInputs,
-} from "../components/ResetPasswordForm"
 import HelmetMetaData from "../components/HelmetMetaData"
+import PageTitle from "../components/PageTitle"
 import RequireNotLoggedIn from "../components/RequireNotLoggedIn"
+import ResetPasswordForm, {
+    type ResetPasswordFormInputs,
+} from "../components/ResetPasswordForm"
+import GlobalContext from "../global-state/context"
 
 export default function Activate(): JSX.Element {
     const { dispatch } = useContext(GlobalContext)

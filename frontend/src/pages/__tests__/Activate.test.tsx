@@ -1,15 +1,14 @@
-import * as React from "react"
-import { render, waitFor, screen, fireEvent } from "@testing-library/react"
+import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom"
-import { MemoryRouter, Route } from "react-router-dom"
 import { http } from "msw"
 import { setupServer } from "msw/node"
-import GlobalStateProvider from "../../global-state/provider"
-import ActivatePage from "../Activate"
-import State from "../../global-state/state"
-import { MockHomePage } from "../../test-utils"
-import { ActivateRequest, LoginResult } from "../../models/login"
+import { MemoryRouter, Route } from "react-router-dom"
 import { axiosConfig } from "../../api/config"
+import GlobalStateProvider from "../../global-state/provider"
+import type State from "../../global-state/state"
+import type { ActivateRequest, LoginResult } from "../../models/login"
+import { MockHomePage } from "../../test-utils"
+import ActivatePage from "../Activate"
 
 /**
  * Renders the Activate page in a router with a GlobalStateProvider.

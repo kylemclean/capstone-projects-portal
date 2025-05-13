@@ -1,22 +1,21 @@
-import * as React from "react"
-import { useEffect, useState } from "react"
+import MenuIcon from "@mui/icons-material/Menu"
 import {
     AppBar,
-    IconButton,
     Drawer,
+    IconButton,
     Link,
     MenuItem,
     Toolbar,
-    useTheme,
     useMediaQuery,
+    useTheme,
 } from "@mui/material"
-import MenuIcon from "@mui/icons-material/Menu"
 import Grid from "@mui/material/Grid"
+import { useEffect, useState } from "react"
 import { Link as RouterLink } from "react-router-dom"
+import { useCurrentUser } from "../hooks"
+import LoginButton from "./LoginButton"
 import PortalLogo from "./PortalLogo"
 import UserNavbarButton from "./UserNavbarButton"
-import LoginButton from "./LoginButton"
-import { useCurrentUser } from "../hooks"
 
 interface NavBarState {
     mobileView: boolean

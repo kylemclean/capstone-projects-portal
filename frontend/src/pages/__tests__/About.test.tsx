@@ -1,10 +1,9 @@
-import React from "react"
 import { render } from "@testing-library/react"
-import { Route, MemoryRouter } from "react-router-dom"
-import About from "../About"
-import { setupServer } from "msw/node"
 import { http } from "msw"
+import { setupServer } from "msw/node"
+import { MemoryRouter, Route } from "react-router-dom"
 import { axiosConfig } from "../../api/config"
+import About from "../About"
 
 const server = setupServer(
     http.get(`${axiosConfig.baseURL}/orgs`, () => Response.json([]))

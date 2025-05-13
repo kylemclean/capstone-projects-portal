@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React from "react"
 import {
     fireEvent,
     render,
@@ -7,15 +5,16 @@ import {
     waitFor,
     within,
 } from "@testing-library/react"
-import { Route, MemoryRouter, useParams } from "react-router-dom"
-import { setupServer } from "msw/node"
 import { http } from "msw"
-import Project, { ProjectType, Term } from "../../models/project"
-import ClientOrgType from "../../models/client-org-type"
-import ClientOrgShort from "../../models/client-org-short"
-import GlobalStateProvider from "../../global-state/provider"
-import ViewProjects from "../ViewProjects"
+import { setupServer } from "msw/node"
+import { MemoryRouter, Route, useParams } from "react-router-dom"
 import { axiosConfig } from "../../api/config"
+import GlobalStateProvider from "../../global-state/provider"
+import type ClientOrgShort from "../../models/client-org-short"
+import ClientOrgType from "../../models/client-org-type"
+import type Project from "../../models/project"
+import { ProjectType, Term } from "../../models/project"
+import ViewProjects from "../ViewProjects"
 
 const MockViewProjectPage = (): JSX.Element => {
     const { id } = useParams<{ id: string }>()

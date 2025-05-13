@@ -1,15 +1,13 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import * as React from "react"
-import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { LoadingButton } from "@mui/lab"
-import { Alert, useTheme, TextField } from "@mui/material"
+import { Alert, TextField, useTheme } from "@mui/material"
 import {
     Controller,
-    SubmitHandler,
+    type SubmitHandler,
     useForm,
     useFormState,
 } from "react-hook-form"
+import * as yup from "yup"
 
 export interface ResetPasswordFormInputs {
     currentPassword: string

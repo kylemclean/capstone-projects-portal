@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React from "react"
 import { Helmet } from "react-helmet"
 
 // code adapted from https://medium.com/camperstribe/react-social-media-integration-with-react-share-and-react-helmet-84d9def6a445

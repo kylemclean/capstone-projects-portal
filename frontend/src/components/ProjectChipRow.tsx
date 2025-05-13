@@ -1,7 +1,7 @@
-import * as React from "react"
 import { Stack } from "@mui/material"
+import type * as React from "react"
 import { useHistory } from "react-router-dom"
-import Project from "../models/project"
+import type Project from "../models/project"
 import ProjectChip from "./ProjectChip"
 
 export default function ProjectChipRow(props: {

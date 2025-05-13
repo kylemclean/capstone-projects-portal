@@ -1,14 +1,13 @@
-import React from "react"
 import "@testing-library/jest-dom"
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
-import { MemoryRouter, Route } from "react-router-dom"
 import { http } from "msw"
 import { setupServer } from "msw/node"
-import GlobalStateProvider from "../../global-state/provider"
-import State from "../../global-state/state"
-import RequestPasswordReset from "../RequestPasswordReset"
+import { MemoryRouter, Route } from "react-router-dom"
 import { axiosConfig } from "../../api/config"
-import { RequestPasswordResetRequest } from "../../models/login"
+import GlobalStateProvider from "../../global-state/provider"
+import type State from "../../global-state/state"
+import type { RequestPasswordResetRequest } from "../../models/login"
+import RequestPasswordReset from "../RequestPasswordReset"
 
 const renderRequestPasswordResetPage = (initialState?: State) =>
     render(

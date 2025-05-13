@@ -1,17 +1,17 @@
-import React from "react"
-import { render, screen, fireEvent, waitFor } from "@testing-library/react"
-import { Route, MemoryRouter, useParams } from "react-router-dom"
+import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 // import API mocking utilities from Mock Service Worker
 import { http } from "msw"
 import { setupServer } from "msw/node"
-import Project, { Term, ProjectType } from "../../models/project"
-import ClientOrgShort from "../../models/client-org-short"
-import ClientOrgType from "../../models/client-org-type"
-import EditProject from "../EditProject"
-import GlobalStateProvider from "../../global-state/provider"
+import { MemoryRouter, Route, useParams } from "react-router-dom"
 import { axiosConfig } from "../../api/config"
-import CurrentUserInfo from "../../models/current-user-info"
-import State from "../../global-state/state"
+import GlobalStateProvider from "../../global-state/provider"
+import type State from "../../global-state/state"
+import type ClientOrgShort from "../../models/client-org-short"
+import ClientOrgType from "../../models/client-org-type"
+import type CurrentUserInfo from "../../models/current-user-info"
+import type Project from "../../models/project"
+import { ProjectType, Term } from "../../models/project"
+import EditProject from "../EditProject"
 
 const client: ClientOrgShort = {
     id: "23",

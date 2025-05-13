@@ -1,4 +1,4 @@
-import * as React from "react"
+import { ArrowDownward, ArrowUpward } from "@mui/icons-material"
 import {
     Container,
     Grid,
@@ -7,16 +7,16 @@ import {
     TextField,
     ToggleButton,
 } from "@mui/material"
-import { useEffect, useState } from "react"
 import Typography from "@mui/material/Typography"
-import { ArrowUpward, ArrowDownward } from "@mui/icons-material"
+import { useEffect, useState } from "react"
 import { useHistory, useLocation } from "react-router-dom"
 import { portalApiInstance } from "../api/portal-api"
-import Project, { ProjectType, Term } from "../models/project"
-import ProjectCard from "../components/ProjectCard"
-import ClientOrgType from "../models/client-org-type"
-import SearchBar from "../components/SearchBar"
 import HelmetMetaData from "../components/HelmetMetaData"
+import ProjectCard from "../components/ProjectCard"
+import SearchBar from "../components/SearchBar"
+import ClientOrgType from "../models/client-org-type"
+import type Project from "../models/project"
+import { ProjectType, Term } from "../models/project"
 
 // ESLint wants you to include functions in useEffect dependencies
 // but it can cause infinite render loops

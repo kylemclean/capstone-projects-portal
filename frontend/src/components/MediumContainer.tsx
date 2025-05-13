@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import * as React from "react"
-import { Box, Paper, Container } from "@mui/material"
+
+import { Box, Container, Paper } from "@mui/material"
+import type * as React from "react"
 
 export default function MediumContainer(
     props: React.PropsWithChildren

@@ -1,7 +1,6 @@
-import * as React from "react"
-import { createRoot } from "react-dom/client"
 import CssBaseline from "@mui/material/CssBaseline"
 import { ThemeProvider } from "@mui/material/styles"
+import { createRoot } from "react-dom/client"
 import App from "./App"
 import UAlbertaTheme from "./theme"
 

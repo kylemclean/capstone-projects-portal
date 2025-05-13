@@ -1,17 +1,15 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React from "react"
 import "@testing-library/jest-dom"
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
-import { MemoryRouter, Route } from "react-router-dom"
 import { http } from "msw"
 import { setupServer } from "msw/node"
-import GlobalStateProvider from "../../global-state/provider"
-import State from "../../global-state/state"
+import { MemoryRouter, Route } from "react-router-dom"
 import { axiosConfig } from "../../api/config"
-import ResetPasswordPage from "../ResetPassword"
-import { ResetPasswordRequest, ResetPasswordResult } from "../../models/login"
-import CurrentUserInfo from "../../models/current-user-info"
+import GlobalStateProvider from "../../global-state/provider"
+import type State from "../../global-state/state"
+import type CurrentUserInfo from "../../models/current-user-info"
+import type { ResetPasswordRequest } from "../../models/login"
 import { LoginStatus, MockLoginPage } from "../../test-utils"
+import ResetPasswordPage from "../ResetPassword"
 
 const renderResetPasswordPage = ({
     initialState,

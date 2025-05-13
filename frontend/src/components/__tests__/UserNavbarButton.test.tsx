@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import * as React from "react"
 import { fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { MemoryRouter, Route } from "react-router-dom"
 import GlobalStateProvider from "../../global-state/provider"
-import State from "../../global-state/state"
-import UserNavbarButton from "../UserNavbarButton"
-import CurrentUserInfo from "../../models/current-user-info"
+import type State from "../../global-state/state"
+import type CurrentUserInfo from "../../models/current-user-info"
 import { LoginStatus, MockProfilePage } from "../../test-utils"
+import UserNavbarButton from "../UserNavbarButton"
 
 /**
  * Renders the UserNavbarButton with a GlobalStateProvider and router.

@@ -1,8 +1,8 @@
-import * as React from "react"
-import { ReactNode, ReactElement, useReducer } from "react"
+import { type ReactElement, type ReactNode, useReducer } from "react"
 import GlobalContext from "./context"
 import Reducer from "./reducer"
-import State, { initialState as defaultInitialState } from "./state"
+import type State from "./state"
+import { initialState as defaultInitialState } from "./state"
 
 export default function GlobalStateProvider({
     children,

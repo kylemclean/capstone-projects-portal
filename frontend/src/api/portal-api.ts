@@ -1,16 +1,15 @@
 import axios, {
-    AxiosError,
-    AxiosInstance,
-    AxiosRequestConfig,
-    AxiosResponse,
+    type AxiosError,
+    type AxiosInstance,
+    type AxiosRequestConfig,
+    type AxiosResponse,
 } from "axios"
-import { Dispatch } from "react"
-import ClientOrg from "../models/client-org"
-import User from "../models/user"
-import { axiosConfig } from "./config"
-import Project from "../models/project"
-import ProposalForm from "../models/proposal-form"
-import {
+import type { Dispatch } from "react"
+import type Action from "../global-state/action"
+import type ClientOrg from "../models/client-org"
+import type CurrentUserInfo from "../models/current-user-info"
+import type ImportCsvResponse from "../models/import"
+import type {
     ActivateRequest,
     ActivateResult,
     LoginResult,
@@ -20,9 +19,10 @@ import {
     ResetPasswordRequest,
     ResetPasswordResult,
 } from "../models/login"
-import CurrentUserInfo from "../models/current-user-info"
-import Action from "../global-state/action"
-import ImportCsvResponse from "../models/import"
+import type Project from "../models/project"
+import type ProposalForm from "../models/proposal-form"
+import type User from "../models/user"
+import { axiosConfig } from "./config"
 
 /**
  * Returns an appropriate error message for a given error object.

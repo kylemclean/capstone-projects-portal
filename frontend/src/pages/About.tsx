@@ -1,14 +1,12 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import * as React from "react"
-import { Box, Container, Typography, Link, Grid } from "@mui/material"
+import { Box, Container, Grid, Link, Typography } from "@mui/material"
+import { useEffect, useState } from "react"
 import { Link as RouterLink } from "react-router-dom"
-import { useState, useEffect } from "react"
-import { ABOUT_TITLE, CLIENT_TEST } from "../constants/about-us"
+import { portalApiInstance } from "../api/portal-api"
+import HelmetMetaData from "../components/HelmetMetaData"
 import PageTitle from "../components/PageTitle"
 import TestimonialCard from "../components/TestimonialCard"
-import { portalApiInstance } from "../api/portal-api"
-import ClientTestimonial from "../models/client-testimonial"
-import HelmetMetaData from "../components/HelmetMetaData"
+import { ABOUT_TITLE, CLIENT_TEST } from "../constants/about-us"
+import type ClientTestimonial from "../models/client-testimonial"
 
 export default function About(): JSX.Element {
     // list of clients with testimonials

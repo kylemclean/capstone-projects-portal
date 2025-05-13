@@ -1,23 +1,21 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import * as React from "react"
 import {
-    render,
     fireEvent,
+    render,
     screen,
-    within,
     waitFor,
+    within,
 } from "@testing-library/react"
-import { MemoryRouter, Route, useParams } from "react-router-dom"
-import { setupServer } from "msw/node"
 import { http } from "msw"
-import GlobalStateProvider from "../../global-state/provider"
-import ViewClientsPage from "../ViewClients"
-import ClientOrg from "../../models/client-org"
-import ClientOrgType from "../../models/client-org-type"
-import ProjectShort from "../../models/project-short"
-import { ProjectType, Term } from "../../models/project"
-import { QueryParamsDisplay, waitForQueryParam } from "../../test-utils"
+import { setupServer } from "msw/node"
+import { MemoryRouter, Route, useParams } from "react-router-dom"
 import { axiosConfig } from "../../api/config"
+import GlobalStateProvider from "../../global-state/provider"
+import type ClientOrg from "../../models/client-org"
+import ClientOrgType from "../../models/client-org-type"
+import { ProjectType, Term } from "../../models/project"
+import type ProjectShort from "../../models/project-short"
+import { QueryParamsDisplay, waitForQueryParam } from "../../test-utils"
+import ViewClientsPage from "../ViewClients"
 
 const MockViewClientPage = (): JSX.Element => {
     const { id } = useParams<{ id: string }>()

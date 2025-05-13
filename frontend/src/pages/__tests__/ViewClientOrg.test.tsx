@@ -1,14 +1,13 @@
-import React from "react"
 import { render } from "@testing-library/react"
-import { Route, MemoryRouter } from "react-router-dom"
-import { setupServer } from "msw/node"
-import ViewClientOrg from "../ViewClientOrg"
 import { http } from "msw"
+import { setupServer } from "msw/node"
+import { MemoryRouter, Route } from "react-router-dom"
 import { axiosConfig } from "../../api/config"
-import ClientOrg from "../../models/client-org"
-import { ProjectType, Term } from "../../models/project"
+import type ClientOrg from "../../models/client-org"
 import ClientOrgType from "../../models/client-org-type"
-import ProjectShort from "../../models/project-short"
+import { ProjectType, Term } from "../../models/project"
+import type ProjectShort from "../../models/project-short"
+import ViewClientOrg from "../ViewClientOrg"
 
 const mockProject: ProjectShort = {
     id: "1000",

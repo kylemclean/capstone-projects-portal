@@ -1,11 +1,10 @@
-import React from "react"
 import { render } from "@testing-library/react"
-import { Route, MemoryRouter } from "react-router-dom"
-import { setupServer } from "msw/node"
 import { http } from "msw"
-import ViewProfile from "../ViewProfile"
-import User from "../../models/user"
+import { setupServer } from "msw/node"
+import { MemoryRouter, Route } from "react-router-dom"
 import { axiosConfig } from "../../api/config"
+import type User from "../../models/user"
+import ViewProfile from "../ViewProfile"
 
 const mockUser: User = {
     id: "1",
