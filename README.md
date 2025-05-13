@@ -15,11 +15,11 @@ uv is used for dependency management.
 
 ### Dependencies
 
-The Capstone Projects Portal server runs with the following dependencies:
+The Capstone Projects Portal development environment uses the following dependencies:
 
-- Python 3.11, uv 0.7.3
-- Node 20, npm 10
-- PostgreSQL 17
+- [Python 3.11](https://www.python.org/downloads/), [uv 0.7.3](https://docs.astral.sh/uv/getting-started/installation/)
+- [Node 20, npm 10](https://nodejs.org/en/download)
+- [PostgreSQL 17](https://www.postgresql.org/download/)
 
 ### Dev container
 
@@ -31,7 +31,7 @@ You do not have to use a dev container for your development environment. If you 
 just ensure the appropriate versions of the above dependencies are installed and properly configured with the project.
 
 To use the dev container, open the repo in VS Code and make sure Docker and the
-[Dev Containers extension](vscode:extension/ms-vscode-remote.remote-containers) is installed.
+[Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) is installed.
 Press F1 and run the "Dev Containers: Reopen in Container" command. The terminal in VS Code will be attached
 to the dev container, and a PostgreSQL container will be accessible on localhost:5432.
 
