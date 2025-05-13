@@ -77,6 +77,18 @@ npm run import-dummy-data
 cd backend && uv run python manage.py createsuperuser
 ```
 
+### Other development environment setup
+
+This project uses [pre-commit](https://pre-commit.com/) hooks to automatically check the code in the project
+before you make a Git commit. It will use [Black](https://black.readthedocs.io/en/stable/) and
+[flake8](https://github.com/pycqa/flake8) to format and lint Python on the backend, and [Biome](https://biomejs.dev/)
+to lint and format TypeScript and CSS on the frontend.
+
+To enable the pre-commit hooks and automatically check these issues when you make a commit, run the command
+```
+uv run pre-commit install
+```
+
 ## Running development servers
 
 To start both the backend and frontend dev servers concurrently, run this command in the root of the repo:
