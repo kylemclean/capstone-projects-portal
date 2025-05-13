@@ -38,7 +38,9 @@ def main():
     USER = env("PORTAL_DB_USER", default="portal")
     PASSWORD = env("PORTAL_DB_PASSWORD", default="portal")
 
-    print(f'Connecting to Postgres server {HOST}:{PORT} with database "{PG_CONNECT_DB_NAME}" and user "{PG_CONNECT_USER}"')
+    print(
+        f'Connecting to Postgres server {HOST}:{PORT} with database "{PG_CONNECT_DB_NAME}" and user "{PG_CONNECT_USER}"'
+    )
     print(f'Will create database "{DB_NAME}" and user "{USER}"')
 
     # Connect to database named 'postgres'
