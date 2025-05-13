@@ -1,30 +1,29 @@
 {
-  "private": true,
-  "devDependencies": {
-    "npm-run-all": "^4.1.5"
-  },
-  "scripts": {
-    "precommit": "npm --prefix frontend run lint-staged && uv run pre-commit run",
-    "reset-database": "cd backend && uv run scripts/setup_db.py --reset && uv run manage.py makemigrations && uv run manage.py migrate",
-    "import-dummy-data": "cd backend && uv run manage.py loaddata portal/fixtures/realistic_dummy_data.json && mkdir -p build/ && cp -r portal/fixtures/media build/",
-    "install-all-dependencies": "uv sync --dev && npm install",
-    "check-types": "cd frontend && npx tsc --pretty --noEmit",
-    "check-format": "cd frontend && npx prettier --check .",
-    "check-lint": "cd frontend && npx eslint . --ext ts --ext tsx --ext js --max-warnings 0",
-    "format-prettier": "cd frontend && npx prettier --write .",
-    "format-python": "uv run pre-commit run --all-files",
-    "check-frontend": "npm run check-format && npm run check-lint && npm run check-types",
-    "check-backend": "uv run black --check --diff --color backend/ && uv run flake8 --show-source backend/",
-    "check-all": "npm run check-frontend && npm run check-backend && npm --prefix frontend run build",
-    "check-format-all": "npm run check-format && npm run check-lint && npm run check-types && npm run format-prettier && npm run format-python && npm --prefix frontend run build",
-    "test-frontend": "npm --prefix frontend run test",
-    "test-backend": "cd backend && uv run manage.py test",
-    "test-all": "npm run test-frontend && npm run test-backend",
-    "start-frontend": "npm --prefix frontend run start",
-    "start-backend": "cd backend && uv run manage.py runserver",
-    "start-servers": "npm-run-all --parallel start-frontend start-backend"
-  },
-  "workspaces": [
-    "frontend"
-  ]
+    "private": true,
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.4",
+        "npm-run-all": "^4.1.5"
+    },
+    "scripts": {
+        "precommit": "npm --prefix frontend run lint-staged && uv run pre-commit run",
+        "reset-database": "cd backend && uv run scripts/setup_db.py --reset && uv run manage.py makemigrations && uv run manage.py migrate",
+        "import-dummy-data": "cd backend && uv run manage.py loaddata portal/fixtures/realistic_dummy_data.json && mkdir -p build/ && cp -r portal/fixtures/media build/",
+        "install-all-dependencies": "uv sync --dev && npm install",
+        "check-types": "cd frontend && npx tsc --pretty --noEmit",
+        "check-format": "cd frontend && npx prettier --check .",
+        "check-lint": "cd frontend && npx eslint . --ext ts --ext tsx --ext js --max-warnings 0",
+        "format-prettier": "cd frontend && npx prettier --write .",
+        "format-python": "uv run pre-commit run --all-files",
+        "check-frontend": "npm run check-format && npm run check-lint && npm run check-types",
+        "check-backend": "uv run black --check --diff --color backend/ && uv run flake8 --show-source backend/",
+        "check-all": "npm run check-frontend && npm run check-backend && npm --prefix frontend run build",
+        "check-format-all": "npm run check-format && npm run check-lint && npm run check-types && npm run format-prettier && npm run format-python && npm --prefix frontend run build",
+        "test-frontend": "npm --prefix frontend run test",
+        "test-backend": "cd backend && uv run manage.py test",
+        "test-all": "npm run test-frontend && npm run test-backend",
+        "start-frontend": "npm --prefix frontend run start",
+        "start-backend": "cd backend && uv run manage.py runserver",
+        "start-servers": "npm-run-all --parallel start-frontend start-backend"
+    },
+    "workspaces": ["frontend"]
 }

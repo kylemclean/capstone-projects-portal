@@ -10,7 +10,9 @@ repos:
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: check-json
+        files: "^backend/.*"
       - id: check-yaml
+        exclude: "^frontend/.*"
 
   - repo: https://github.com/pycqa/isort
     rev: 6.0.1
@@ -31,3 +33,11 @@ repos:
     hooks:
       - id: flake8
         name: Lint Python code with flake8
+
+  - repo: local
+    hooks:
+      - id: local-biome-check
+        name: Biome check
+        entry: npx biome check --write --files-ignore-unknown=true --no-errors-on-unmatched
+        language: system
+        types: [text]
