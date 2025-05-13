@@ -64,9 +64,9 @@ jobs:
           --health-retries 5
 
     env:
-      PORTAL_DB_DATABASE: ${{ secrets.PORTAL_DB_DATABASE }}
-      PORTAL_DB_USER: ${{ secrets.PORTAL_DB_USER }}
-      PORTAL_DB_PASSWORD: ${{ secrets.PORTAL_DB_PASSWORD }}
+      PORTAL_DB_DATABASE: portal
+      PORTAL_DB_USER: portal
+      PORTAL_DB_PASSWORD: portal
       PG_CONNECT_PASSWORD: x
       PORTAL_DB_HOST: localhost
 
@@ -96,7 +96,7 @@ jobs:
 
       - name: Execute the tests
         env:
-          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          DJANGO_SECRET_KEY: unsecret
           DJANGO_DEBUG: False
           PORTAL_DB_PORT: ${{ job.services.postgres.ports[5432] }}
         run: uv run manage.py test
