@@ -134,7 +134,7 @@ const renderViewProjectsPage = (): ReturnType<typeof render> =>
  * Waits for the projects on the page to be finished loading.
  */
 const waitForProjectsToFinishLoading = async (): Promise<void> =>
-    waitFor(() => {
+    await waitFor(() => {
         screen.getByText(`${allProjects.length} matching projects`)
     })
 
@@ -235,7 +235,7 @@ it("can filter by project type", async () => {
         )
 
         // Assert that the query parameter for the project type is set
-        waitFor(() => {
+        await waitFor(() => {
             const text = `type=${type}`
             if (type !== null) screen.getByText(text)
             else expect(screen.queryByText(text)).toBeNull()
@@ -281,7 +281,7 @@ it("can filter by project term", async () => {
         )
 
         // Assert that the query parameter for the project term is set
-        waitFor(() => {
+        await waitFor(() => {
             const text = `term=${term}`
             if (term !== null) screen.getByText(text)
             else expect(screen.queryByText(text)).toBeNull()
