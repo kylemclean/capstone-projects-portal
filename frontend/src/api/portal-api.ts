@@ -166,10 +166,10 @@ export default class PortalApi {
         const formData = new FormData()
         formData.append("file", csvFile)
         return this.axiosInstance
-            .post<
-                FormData,
-                AxiosResponse<ImportCsvResponse>
-            >("/csv/validate/", formData)
+            .post<FormData, AxiosResponse<ImportCsvResponse>>(
+                "/csv/validate/",
+                formData
+            )
             .then((response) => response.data)
     }
 
@@ -177,10 +177,10 @@ export default class PortalApi {
         const formData = new FormData()
         formData.append("file", csvFile)
         return this.axiosInstance
-            .post<
-                FormData,
-                AxiosResponse<ImportCsvResponse>
-            >("/csv/import/", formData)
+            .post<FormData, AxiosResponse<ImportCsvResponse>>(
+                "/csv/import/",
+                formData
+            )
             .then((response) => response.data)
     }
 

@@ -36,10 +36,10 @@ export default function About(): JSX.Element {
                         about software engineering.
                     </Typography>
                     <Typography paragraph>
-                        The Capstone Projects Portal serves as a showcase of
-                        the projects that the students have completed, and a
-                        place to connect with potential clients who may be
-                        interested in working with the students.
+                        The Capstone Projects Portal serves as a showcase of the
+                        projects that the students have completed, and a place
+                        to connect with potential clients who may be interested
+                        in working with the students.
                     </Typography>
                     <Typography paragraph>
                         If you are a client interested in working with us,{" "}

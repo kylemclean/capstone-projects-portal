@@ -14,9 +14,7 @@ export default function HelmetMetaData(propsObj: {
     const { quote = "" } = propsObj
     const { title = "Capstone Projects Portal" } = propsObj
     const { image = "/logo512.png" } = propsObj
-    const {
-        description
-    } = propsObj
+    const { description } = propsObj
     const { hashtag } = propsObj
     const { noindex = false } = propsObj
 
