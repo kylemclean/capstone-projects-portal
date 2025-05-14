@@ -16,14 +16,13 @@ from urllib.parse import urlparse
 
 from environ import Env
 
-env = Env()
-
-# reading .env file
-env.read_env(env_file=".env")
-
+# This is the backend directory
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# reading .env file
+env = Env()
+env.read_env(env_file=BASE_DIR / ".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
