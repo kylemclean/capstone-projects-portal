@@ -37,6 +37,17 @@ EMAIL_HOST=
 EMAIL_HOST_USER=
 EMAIL_HOST_PASSWORD=
 
+# The reset-database script will connect to the PostgreSQL server specified by
+# PORTAL_DB_HOST and PORTAL_DB_PORT and will use the following credentials to
+# create the database and user specified with PORTAL_DB_DATABASE,
+# PORTAL_DB_USER, and PORTAL_DB_PASSWORD.
+#
+# These will also be used as the default database, username, and password
+# for the PostgreSQL container in the Docker Compose production deployment.
+PG_CONNECT_DATABASE=postgres
+PG_CONNECT_USER=postgres
+PG_CONNECT_PASSWORD=postgres
+
 ##########################################################################
 ##########################################################################
 ###                                                                    ###
@@ -50,13 +61,13 @@ EMAIL_HOST_PASSWORD=
 
 DJANGO_DEBUG=1
 
-# The reset-database script will connect to the PostgreSQL server specified by
-# PORTAL_DB_HOST and PORTAL_DB_PORT and will use the following credentials to
-# create the database and user specified with PORTAL_DB_DATABASE,
-# PORTAL_DB_USER, and PORTAL_DB_PASSWORD.
-PG_CONNECT_DATABASE=postgres
-PG_CONNECT_USER=postgres
-PG_CONNECT_PASSWORD=postgres
+##########################################################################
+##########################################################################
+###                                                                    ###
+###  END DEVELOPMENT VARIABLES                                         ###
+###                                                                    ###
+##########################################################################
+##########################################################################
 ```
 
 # Frontend environment variables
@@ -67,9 +78,13 @@ contents.
 
 ```shell
 # The base URL for the backend API.
+# In the development environment, this runs on a separate origin from the frontend -- locally on port 8000.
+# In the recommended production environment, this can be set to /api as it is hosted on the same origin.
 VITE_API_BASE_URL=http://127.0.0.1:8000/api
 
 # The URL for the backend admin panel.
+# In the development environment, this runs on a separate origin from the frontend -- locally on port 8000.
+# In the recommended production environment, this can be set to /admin as it is hosted on the same origin.
 VITE_ADMIN_URL=http://127.0.0.1:8000/admin
 
 # If you want GitHub login to work, set this to the client ID of the GitHub OAuth app.

@@ -162,6 +162,9 @@ npm run test-all
 [See this document](docs/deployment.md) for an outline of how the portal backend and frontend
 could be deployed.
 
+Alternatively, you can use an experimental [Docker Compose deployment](docs/docker-compose-deployment.md)
+to more easily host the frontend, backend, and database all on the same server.
+
 ## Authors
 
 Developers:
