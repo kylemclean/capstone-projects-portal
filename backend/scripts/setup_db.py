@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-
 import argparse
+import sys
 from pathlib import Path
 
 import psycopg
@@ -74,6 +74,7 @@ def main():
             )
             if response.lower() != "y":
                 print("Aborting")
+                sys.exit(1)
                 return
 
             # Drop the database
