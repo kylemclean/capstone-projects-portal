@@ -5,7 +5,11 @@
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
     "customizations": {
         "vscode": {
-            "extensions": ["biomejs.biome", "ms-python.black-formatter"]
+            "extensions": [
+                "biomejs.biome",
+                "ms-python.black-formatter",
+                "ms-python.isort"
+            ]
         }
     }
 }
