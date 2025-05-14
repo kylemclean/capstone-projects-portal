@@ -18,7 +18,7 @@ uv is used for dependency management.
 The Capstone Projects Portal development environment uses the following dependencies:
 
 - [Python 3.11](https://www.python.org/downloads/), [uv 0.7.3](https://docs.astral.sh/uv/getting-started/installation/)
-- [Node 20, npm 10](https://nodejs.org/en/download)
+- [Node 24, npm 11](https://nodejs.org/en/download)
 - [PostgreSQL 17](https://www.postgresql.org/download/)
 
 ### Dev container
