@@ -1,3 +1,7 @@
 {
-    "recommendations": ["biomejs.biome", "ms-python.black-formatter"]
+    "recommendations": [
+        "biomejs.biome",
+        "ms-python.black-formatter",
+        "ms-vscode-remote.remote-containers"
+    ]
 }
