@@ -27,8 +27,19 @@ env.read_env(env_file=BASE_DIR / ".env")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+SECRET_KEY = None
+
+secret_key_file_path = env("DJANGO_SECRET_KEY_FILE", default="")
+if len(secret_key_file_path) > 0:
+    with open(secret_key_file_path, "rt") as f:
+        SECRET_KEY = f.read().strip()
+
+    if len(SECRET_KEY) == 0:
+        raise Exception("DJANGO_SECRET_KEY_FILE is empty")
+
+if SECRET_KEY is None:
+    # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
+    SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # False if not in os.environ
 DEBUG = env("DJANGO_DEBUG", default=False)

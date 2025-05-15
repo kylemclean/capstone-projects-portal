@@ -29,8 +29,6 @@ services:
     build:
       context: ./
       dockerfile: ./backend/Dockerfile
-      args:
-        - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:?error}
     container_name: portal-backend
     volumes:
       - backend-user-media:/app/backend/media
@@ -43,7 +41,7 @@ services:
     environment:
       # See docs/environment-variables.md for more information
       - FRONTEND_BASE_URL=${FRONTEND_BASE_URL:?error} # Set this to the base URL of the frontend
-      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:?error}
+      - DJANGO_SECRET_KEY_FILE=/run/secrets/django-secret-key
       - DJANGO_DEBUG=${DJANGO_DEBUG:-False}
       - PORTAL_DB_HOST=${PORTAL_DB_HOST:-db} # Default is the service name of the PostgreSQL container
       - PORTAL_DB_PORT=${PORTAL_DB_PORT:-5432}
@@ -57,6 +55,8 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+    secrets:
+      - django-secret-key
 
   # The user-facing Caddy proxy server.
   # It routes API requests from users to the backend, or serves static frontend or backend assets.
@@ -93,3 +93,7 @@ volumes:
   backend-static:
   caddy-data:
   caddy-config:
+
+secrets:
+  django-secret-key:
+    environment: DJANGO_SECRET_KEY
