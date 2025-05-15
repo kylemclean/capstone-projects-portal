@@ -25,7 +25,8 @@ COPY backend/ ./backend
 
 WORKDIR /app/backend
 
-RUN uv run manage.py collectstatic --noinput
+RUN --mount=type=secret,id=django-secret-key \
+    uv run manage.py collectstatic --noinput
 
 EXPOSE 8000
 

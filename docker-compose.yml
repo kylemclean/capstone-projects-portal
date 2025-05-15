@@ -29,6 +29,8 @@ services:
     build:
       context: ./
       dockerfile: ./backend/Dockerfile
+      secrets:
+        - django-secret-key
     container_name: portal-backend
     volumes:
       - backend-user-media:/app/backend/build/media
@@ -41,7 +43,6 @@ services:
     environment:
       # See docs/environment-variables.md for more information
       - FRONTEND_BASE_URL=${FRONTEND_BASE_URL:?error} # Set this to the base URL of the frontend
-      - DJANGO_SECRET_KEY_FILE=/run/secrets/django-secret-key
       - DJANGO_DEBUG=${DJANGO_DEBUG:-False}
       - PORTAL_DB_HOST=${PORTAL_DB_HOST:-db} # Default is the service name of the PostgreSQL container
       - PORTAL_DB_PORT=${PORTAL_DB_PORT:-5432}

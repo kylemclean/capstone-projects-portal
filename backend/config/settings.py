@@ -29,13 +29,13 @@ env.read_env(env_file=BASE_DIR / ".env")
 
 SECRET_KEY = None
 
-secret_key_file_path = env("DJANGO_SECRET_KEY_FILE", default="")
-if len(secret_key_file_path) > 0:
+secret_key_file_path = "/run/secrets/django-secret-key"
+if os.path.isfile(secret_key_file_path):
     with open(secret_key_file_path, "rt") as f:
         SECRET_KEY = f.read().strip()
 
     if len(SECRET_KEY) == 0:
-        raise Exception("DJANGO_SECRET_KEY_FILE is empty")
+        raise Exception(f"{secret_key_file_path} is empty")
 
 if SECRET_KEY is None:
     # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
