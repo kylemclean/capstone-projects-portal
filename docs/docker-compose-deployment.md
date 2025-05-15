@@ -6,7 +6,9 @@ Using this configuration, you can easily deploy the Capstone Projects Portal fro
 The [docker-compose.yml](/docker-compose.yml) file in the root of this repository contains the configuration. It consists of three services:
 - `db`: a PostgreSQL database that stores application data
 - `backend`: the backend Django server, running on Gunicorn, which hosts the API and admin panel
-- `caddy`: a user-facing reverse proxy that serves static frontend and backend assets and user uploads, and routes API and admin panel requests to the backend server
+- `caddy`: a user-facing Caddy reverse proxy that serves static frontend and backend assets and user uploads, and routes API and admin panel requests to the backend server
+
+For more details on deployment, such as setting up emails and GitHub OAuth, see the [deployment documentation page](deployment.md).
 
 ## Steps to deploy
 
@@ -19,23 +21,28 @@ The [docker-compose.yml](/docker-compose.yml) file in the root of this repositor
 git clone https://github.com/open-uofa/capstone-projects-portal.git
 ```
 
-4. Create a `.deploy.env` file in the repository directory, and populate it with the frontend and backend [production environment variables](environment-variables.md). At minimum, set the following environment variables:
+4. Switch to the repository directory.
+```
+cd capstone-projects-portal
+```
 
-- `DJANGO_SECRET_KEY`: set to a random value generated according to [the documentation](environment-variables.md)
+5. Create a `.deploy.env` file in the repository directory, and populate it with the frontend and backend [production environment variables](environment-variables.md). At minimum, set the following environment variables:
+
+- `DJANGO_SECRET_KEY`: set to a random value according to [the documentation](environment-variables.md). It may be easiest to generate it in your local development environment.
 - `FRONTEND_BASE_URL`: set to the origin the app will be hosted on. For example: https://cmput401.ca
 
-5. In the repository directory, build and start the containers.
+6. In the repository directory, build and start the containers.
 ```
 docker compose --env-file .deploy.env up --build -d
 ```
 
-6. To initialize the database, you need to create the appropriate database and user on the PostgreSQL container, and apply the database migrations.
+7. To initialize the database, you need to create the appropriate database and user on the PostgreSQL container, and apply the database migrations.
 You can do this by running the command
 ```
 docker exec -it portal-backend sh -c "uv run /app/backend/scripts/setup_db.py && uv run /app/backend/manage.py migrate"
 ```
 
-7. To create an admin user account, run the command
+8. To create an admin user account, run the command
 ```
 docker exec -it portal-backend sh -c "uv run /app/backend/manage.py createsuperuser"
 ```
