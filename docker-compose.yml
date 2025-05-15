@@ -75,7 +75,7 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - backend-user-media:/app/backend/build/media:ro
-      - backend-static:/app/djangostatic:ro
+      - backend-static:/app/backend/djangostatic:ro
       - caddy-data:/data                    # Persistent storage for Caddy's state (certs, etc.)
       - caddy-config:/config                # Persistent storage for Caddy's config (if auto-managed)
     env_file:

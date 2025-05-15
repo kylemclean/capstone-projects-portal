@@ -25,7 +25,7 @@
 		# root * <path> specifies the document root for this handler
 		# The path is relative to Caddy's working directory in the container,
 		# or an absolute path. We'll use absolute paths matching volume mounts.
-		root * /app/djangostatic
+		root * /app/backend/djangostatic
 		file_server
 	}
 
