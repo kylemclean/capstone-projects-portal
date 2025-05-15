@@ -31,7 +31,7 @@
 
 	# Serve user-uploaded media files
 	handle_path /media/* {
-		root * /app/media
+		root * /app/backend/build/media
 		file_server
 	}
 

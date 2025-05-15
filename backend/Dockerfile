@@ -25,8 +25,6 @@ COPY backend/ ./backend
 
 WORKDIR /app/backend
 
-RUN mkdir media djangostatic
-
 RUN uv run manage.py collectstatic --noinput
 
 EXPOSE 8000

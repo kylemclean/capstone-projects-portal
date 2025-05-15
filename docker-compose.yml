@@ -31,7 +31,7 @@ services:
       dockerfile: ./backend/Dockerfile
     container_name: portal-backend
     volumes:
-      - backend-user-media:/app/backend/media
+      - backend-user-media:/app/backend/build/media
       - backend-static:/app/backend/djangostatic
     # Uncomment below to expose backend to host
     #ports:
@@ -74,7 +74,7 @@ services:
       - "443:443" # For HTTPS (Caddy will use this if serving a domain)
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - backend-user-media:/app/media:ro
+      - backend-user-media:/app/backend/build/media:ro
       - backend-static:/app/djangostatic:ro
       - caddy-data:/data                    # Persistent storage for Caddy's state (certs, etc.)
       - caddy-config:/config                # Persistent storage for Caddy's config (if auto-managed)
