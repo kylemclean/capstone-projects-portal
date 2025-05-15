@@ -334,7 +334,8 @@ Using this configuration, you can easily deploy the Capstone Projects Portal fro
 <p>The <a href="/docker-compose.yml">docker-compose.yml</a> file in the root of this repository contains the configuration. It consists of three services:
 - <code>db</code>: a PostgreSQL database that stores application data
 - <code>backend</code>: the backend Django server, running on Gunicorn, which hosts the API and admin panel
-- <code>caddy</code>: a user-facing reverse proxy that serves static frontend and backend assets and user uploads, and routes API and admin panel requests to the backend server</p>
+- <code>caddy</code>: a user-facing Caddy reverse proxy that serves static frontend and backend assets and user uploads, and routes API and admin panel requests to the backend server</p>
+<p>For more details on deployment, such as setting up emails and GitHub OAuth, see the <a href="../deployment/">deployment documentation page</a>.</p>
 <h2 id="steps-to-deploy">Steps to deploy</h2>
 <ol>
 <li>
@@ -350,10 +351,15 @@ Using this configuration, you can easily deploy the Capstone Projects Portal fro
 <pre><code>git clone https://github.com/open-uofa/capstone-projects-portal.git
 </code></pre>
 <ol>
+<li>Switch to the repository directory.</li>
+</ol>
+<pre><code>cd capstone-projects-portal
+</code></pre>
+<ol>
 <li>Create a <code>.deploy.env</code> file in the repository directory, and populate it with the frontend and backend <a href="../environment-variables/">production environment variables</a>. At minimum, set the following environment variables:</li>
 </ol>
 <ul>
-<li><code>DJANGO_SECRET_KEY</code>: set to a random value generated according to <a href="../environment-variables/">the documentation</a></li>
+<li><code>DJANGO_SECRET_KEY</code>: set to a random value according to <a href="../environment-variables/">the documentation</a>. It may be easiest to generate it in your local development environment.</li>
 <li><code>FRONTEND_BASE_URL</code>: set to the origin the app will be hosted on. For example: https://cmput401.ca</li>
 </ul>
 <ol>
